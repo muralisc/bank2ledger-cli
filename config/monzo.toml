@@ -1,0 +1,15 @@
+debug = true
+default_first_account = "Assets::Bank::Monzo"
+
+[ledger_record_to_row]
+date = 1                  # Date
+payee = 4                 # Name
+# first_account= -1       # Static: Monzo
+second_account_hint = 4   # Name
+first_amount= 7           # Amount
+first_amount_currency= 8  # Currency
+
+# extra fields
+description = 14          # Description
+address = 12              # Address
+type = 3                  # type
