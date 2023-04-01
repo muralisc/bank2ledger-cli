@@ -1,5 +1,6 @@
 debug = true
 default_first_account = "Assets::Bank::Monzo"
+default_second_account = "Expenses:UnaccountedExpenses"
 
 [ledger_record_to_row]
 date = 1                  # Date
@@ -9,7 +10,21 @@ second_account_hint = 4   # Name
 first_amount= 7           # Amount
 first_amount_currency= 8  # Currency
 
-# extra fields
+[ledger_record_to_row.meta]
 description = 14          # Description
 address = 12              # Address
-type = 3                  # type
+transaction_type = 3      # type
+
+[[exclude_conditions]]
+column = 3              # transaction type
+value = "Pot"
+operation = "contains"
+
+[[payee_second_account_mapping]]
+key = "Uber"
+value = "Expenses:Transport"
+
+[[payee_second_account_mapping]]
+key = "Amazon|Metropolitan Infrastru|Virgin Media|Lebara"
+value = "Expenses:Utilities"
+

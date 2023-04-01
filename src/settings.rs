@@ -3,6 +3,14 @@ use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
 #[allow(unused)]
+pub struct Meta {
+    pub description: usize,
+    pub address: usize,
+    pub transaction_type: usize,
+}
+
+#[derive(Debug, Deserialize)]
+#[allow(unused)]
 pub struct LedgerRecordToRow {
     pub date: usize,
     pub payee: usize,
@@ -10,16 +18,34 @@ pub struct LedgerRecordToRow {
     pub second_account_hint: usize,
     pub first_amount: usize,
     pub first_amount_currency: usize,
-    pub description: usize,
-    pub address: usize,
+    pub meta: Meta,
 }
+
+#[derive(Debug, Deserialize)]
+#[allow(unused)]
+pub struct ExcludeCondition {
+    pub column: usize,
+    pub value: String,
+    pub operation: String,
+}
+
+#[derive(Debug, Deserialize)]
+#[allow(unused)]
+pub struct PayeeSecondAccountMapping {
+    pub key: String,
+    pub value: String,
+}
+
 
 #[derive(Debug, Deserialize)]
 #[allow(unused)]
 pub struct Settings {
     pub debug: bool,
     pub default_first_account: String,
+    pub default_second_account: String,
     pub ledger_record_to_row: LedgerRecordToRow,
+    pub exclude_conditions: Vec<ExcludeCondition>,
+    pub payee_second_account_mapping: Vec<PayeeSecondAccountMapping>
 }
 
 impl Settings {
