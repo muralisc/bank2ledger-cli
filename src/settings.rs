@@ -31,11 +31,17 @@ pub struct ExcludeCondition {
 
 #[derive(Debug, Deserialize)]
 #[allow(unused)]
-pub struct PayeeSecondAccountMapping {
+pub struct Mapping{
     pub key: String,
     pub value: String,
 }
 
+#[derive(Debug, Deserialize)]
+#[allow(unused)]
+pub struct PayeeSecondAccountMapping {
+    pub expense: Vec<Mapping>,
+    pub income: Vec<Mapping>,
+}
 
 #[derive(Debug, Deserialize)]
 #[allow(unused)]
@@ -45,7 +51,7 @@ pub struct Settings {
     pub default_second_account: String,
     pub ledger_record_to_row: LedgerRecordToRow,
     pub exclude_conditions: Vec<ExcludeCondition>,
-    pub payee_second_account_mapping: Vec<PayeeSecondAccountMapping>
+    pub payee_to_second_account: PayeeSecondAccountMapping,
 }
 
 impl Settings {

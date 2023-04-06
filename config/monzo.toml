@@ -1,5 +1,5 @@
 debug = true
-default_first_account = "Assets::Bank::Monzo"
+default_first_account = "Assets:Bank:Monzo"
 default_second_account = "Expenses:UnaccountedExpenses"
 
 [ledger_record_to_row]
@@ -20,11 +20,36 @@ column = 3              # transaction type
 value = "Pot"
 operation = "contains"
 
-[[payee_second_account_mapping]]
+[[exclude_conditions]]
+column = 7
+value = "0.00"
+operation = "equal"
+
+[[payee_to_second_account.expense]]
 key = "Uber"
 value = "Expenses:Transport"
 
-[[payee_second_account_mapping]]
+
+[[payee_to_second_account.expense]]
 key = "Amazon|Metropolitan Infrastru|Virgin Media|Lebara"
 value = "Expenses:Utilities"
 
+[[payee_to_second_account.expense]]
+key= "Scottish Power|Royal Mail"
+value= "Expenses:Utilities"
+
+[[payee_to_second_account.expense]]
+key = "L&Q|Barnet"
+value = "Expenses:Housing"
+
+[[payee_to_second_account.expense]]
+key = "Hoppers|deliveroo|Netflix|ODEON"
+value = "Expenses:Entertainment"
+
+[[payee_to_second_account.income]]
+key= "Sree Sobha Dharmarajan"
+value =  "Income:LivingShare"
+
+[[payee_to_second_account.income]]
+key= "SURESHCHANDR"
+value= "Assets:Bank:HSBC"
