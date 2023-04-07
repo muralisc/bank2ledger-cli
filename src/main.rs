@@ -21,16 +21,15 @@ struct Args {
 }
 
 fn main() {
-
     env_logger::init();
     let args = Args::parse();
     debug!("Config path: {}!", args.config);
     let settings = match Settings::new(&args.config) {
-       Ok(settings) => settings,
-       Err(error) => {
-           println!("Error opening settings file, Exiting. Error: {:?}", error);
-           return
-       }
+        Ok(settings) => settings,
+        Err(error) => {
+            println!("Error opening settings file, Exiting. Error: {:?}", error);
+            return;
+        }
     };
     debug!("Bank CSV path: {}!", args.transactions_csv);
 

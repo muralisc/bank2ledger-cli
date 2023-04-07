@@ -38,15 +38,17 @@ impl Bank2Ledger {
             mapping = &self.settings.payee_to_second_account.income;
         }
 
-
         for item in mapping {
-            let re = RegexBuilder::new(&format!(r"{}", item.key)).case_insensitive(true).build().unwrap();
+            let re = RegexBuilder::new(&format!(r"{}", item.key))
+                .case_insensitive(true)
+                .build()
+                .unwrap();
             match re.find(second_account_hint) {
                 Some(mat) => {
                     log::debug!("Match {:?}", mat);
                     return item.value.to_string();
                 }
-                None => log::debug!("None")
+                None => log::debug!("None"),
             }
         }
         return self.settings.default_second_account.to_string();

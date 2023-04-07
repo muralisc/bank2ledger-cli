@@ -27,7 +27,7 @@ pub struct ExcludeCondition {
 }
 
 #[derive(Debug, Deserialize)]
-pub struct Mapping{
+pub struct Mapping {
     pub key: String,
     pub value: String,
 }
