@@ -2,7 +2,6 @@ use config::{Config, ConfigError, Environment, File};
 use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
-#[allow(unused)]
 pub struct Meta {
     pub description: usize,
     pub address: usize,
@@ -10,7 +9,6 @@ pub struct Meta {
 }
 
 #[derive(Debug, Deserialize)]
-#[allow(unused)]
 pub struct LedgerRecordToRow {
     pub date: usize,
     pub payee: usize,
@@ -22,7 +20,6 @@ pub struct LedgerRecordToRow {
 }
 
 #[derive(Debug, Deserialize)]
-#[allow(unused)]
 pub struct ExcludeCondition {
     pub column: usize,
     pub value: String,
@@ -30,21 +27,18 @@ pub struct ExcludeCondition {
 }
 
 #[derive(Debug, Deserialize)]
-#[allow(unused)]
 pub struct Mapping{
     pub key: String,
     pub value: String,
 }
 
 #[derive(Debug, Deserialize)]
-#[allow(unused)]
 pub struct PayeeSecondAccountMapping {
     pub expense: Vec<Mapping>,
     pub income: Vec<Mapping>,
 }
 
 #[derive(Debug, Deserialize)]
-#[allow(unused)]
 pub struct Settings {
     pub debug: bool,
     pub default_first_account: String,

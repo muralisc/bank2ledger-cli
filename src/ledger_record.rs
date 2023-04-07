@@ -29,7 +29,7 @@ impl LedgerRecord {
     }
     pub fn print(&self) {
         let tab_as_spaces = "        ";
-        println!("\n{} * \"{}\"", self.date, self.payee);
+        println!("{} * \"{}\"", self.date, self.payee);
         println!(
             "{}{}{}{} {}",
             tab_as_spaces,
@@ -39,5 +39,6 @@ impl LedgerRecord {
             self.first_amount_currency
         );
         println!("{}{}", tab_as_spaces, self.second_account);
+        println!();
     }
 }

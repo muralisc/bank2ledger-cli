@@ -55,6 +55,7 @@ impl Bank2Ledger {
     fn get_first_amount(&self, record: &csv::StringRecord) -> String {
         return record[self.settings.ledger_record_to_row.first_amount].to_string();
     }
+
     fn get_first_amount_currency(&self, record: &csv::StringRecord) -> String {
         return record[self.settings.ledger_record_to_row.first_amount_currency].to_string();
     }

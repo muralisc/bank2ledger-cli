@@ -21,14 +21,17 @@ struct Args {
 }
 
 fn main() {
-    // Read
-    // Apply filters
-    // Print
 
     env_logger::init();
     let args = Args::parse();
     debug!("Config path: {}!", args.config);
-    let settings = Settings::new(&args.config).unwrap();
+    let settings = match Settings::new(&args.config) {
+       Ok(settings) => settings,
+       Err(error) => {
+           println!("Error opening settings file, Exiting. Error: {:?}", error);
+           return
+       }
+    };
     debug!("Bank CSV path: {}!", args.transactions_csv);
 
     let bank2ledger = Bank2Ledger::new(settings, args.transactions_csv);
