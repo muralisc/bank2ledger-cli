@@ -15,8 +15,8 @@ pub struct LedgerRecordToRow {
     pub first_account: Option<usize>,
     pub second_account_hint: usize,
     pub first_amount: usize,
-    pub first_amount_currency: usize,
-    pub meta: Meta,
+    pub first_amount_currency: Option<usize>,
+    pub meta: Option<Meta>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -43,6 +43,9 @@ pub struct Settings {
     pub debug: bool,
     pub default_first_account: String,
     pub default_second_account: String,
+    pub csv_has_headers: bool,
+    pub date_format: String,
+    pub date_regex: String,
     pub ledger_record_to_row: LedgerRecordToRow,
     pub exclude_conditions: Vec<ExcludeCondition>,
     pub payee_to_second_account: PayeeSecondAccountMapping,

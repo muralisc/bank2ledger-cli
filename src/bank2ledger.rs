@@ -2,6 +2,7 @@ use crate::ledger_record::LedgerRecord;
 use crate::settings::Settings;
 use chrono::NaiveDate;
 use regex::RegexBuilder;
+use tracing::{info, debug};
 
 pub struct Bank2Ledger {
     settings: Settings,
@@ -18,7 +19,11 @@ impl Bank2Ledger {
 
     fn get_date(&self, record: &csv::StringRecord) -> NaiveDate {
         let date_str = &record[self.settings.ledger_record_to_row.date].trim();
-        return NaiveDate::parse_from_str(date_str, "%d/%m/%Y").unwrap();
+        debug!("date string : {}", date_str);
+        let re = RegexBuilder::new(&format!(r"{}", self.settings.date_regex)).build().unwrap();
+        let cleaned_date = re.find(date_str).unwrap();
+        debug!("date match: {}", cleaned_date.as_str());
+        return NaiveDate::parse_from_str(cleaned_date.as_str(), &self.settings.date_format).unwrap();
     }
 
     fn get_payee(&self, record: &csv::StringRecord) -> String {
@@ -45,10 +50,10 @@ impl Bank2Ledger {
                 .unwrap();
             match re.find(second_account_hint) {
                 Some(mat) => {
-                    log::debug!("Match {:?}", mat);
+                    debug!("Match {:?}", mat);
                     return item.value.to_string();
                 }
-                None => log::debug!("None"),
+                None => debug!("None"),
             }
         }
         return self.settings.default_second_account.to_string();
@@ -59,13 +64,18 @@ impl Bank2Ledger {
     }
 
     fn get_first_amount_currency(&self, record: &csv::StringRecord) -> String {
-        return record[self.settings.ledger_record_to_row.first_amount_currency].to_string();
+        match self.settings.ledger_record_to_row.first_amount_currency {
+            None => return "GBP".to_string(),
+            Some(first_amount_currency) => {
+                return record[first_amount_currency].to_string();
+            }
+        }
     }
 
     fn should_exclude(&self, record: &csv::StringRecord) -> bool {
         let mut should_exclude: bool = false;
         for exclude_condition in &self.settings.exclude_conditions {
-            log::debug!("Excluding condition: {:?}", exclude_condition);
+            debug!("Excluding condition: {:?}", exclude_condition);
             let column_under_check = &record[exclude_condition.column];
             if exclude_condition.operation == "contains" {
                 if column_under_check.contains(&exclude_condition.value) {
@@ -81,36 +91,28 @@ impl Bank2Ledger {
     }
 
     pub fn print(&self) {
-        let mut reader = csv::Reader::from_path(&self.transactions_file_path).unwrap();
+        let mut reader = csv::ReaderBuilder::new()
+            .has_headers(false)
+            .flexible(true)
+            .from_path(&self.transactions_file_path)
+            .unwrap();
         for record in reader.records() {
             let record = record.unwrap();
-            log::debug!("record: {:?}!", record);
-
-            log::debug!("Length or row {}", record.len());
-            log::debug!(
-                "Address {}",
-                &record[self.settings.ledger_record_to_row.meta.address],
-            );
+            debug!("record: {:?}!", record);
+            debug!("Length or row {}", record.len());
 
             if self.should_exclude(&record) {
-                log::info!("Excluding row: {:?}", record);
+                info!("Excluding row: {:?}", record);
                 continue;
             }
 
-            let date = self.get_date(&record);
-            let payee = self.get_payee(&record);
-            let default_first_account = &self.settings.default_first_account;
-            let first_amount = self.get_first_amount(&record);
-            let first_amount_currency = self.get_first_amount_currency(&record);
-            let second_account = self.get_second_accoutn(&record);
-
             let lr = LedgerRecord::new(
-                date,
-                payee,
-                default_first_account.to_string(),
-                first_amount,
-                first_amount_currency,
-                second_account,
+                self.get_date(&record),
+                self.get_payee(&record),
+                self.settings.default_first_account.to_string(),
+                self.get_first_amount(&record),
+                self.get_first_amount_currency(&record),
+                self.get_second_accoutn(&record),
             );
             lr.print();
         }

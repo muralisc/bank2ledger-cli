@@ -1,0 +1,31 @@
+debug = true
+default_first_account = "Assets:Investments:CharlesSchwab"
+default_second_account = "Expenses:UnaccountedExpenses"
+csv_has_headers = false
+date_format="%m/%d/%Y"
+date_regex='\d{2}/\d{2}/\d{4}'
+
+[ledger_record_to_row]
+date = 0                  # Date
+payee = 1                 # Name
+second_account_hint = 3   # Name
+first_amount= 4           # Amount
+first_amount_currency= 2  # Currency
+
+[[exclude_conditions]]
+column = 0              # transaction type
+value = "Date"
+operation = "equal"
+
+[[exclude_conditions]]
+column = 0              # transaction type
+value = "Transactions  for account"
+operation = "contains"
+
+[[payee_to_second_account.income]]
+key = "META PLATFORMS INC CLASS A"
+value = "Income:Facebook:RSU"
+
+[[payee_to_second_account.expense]]
+key = "FACEBOOK UK LTD"
+value = "Income:Facebook"

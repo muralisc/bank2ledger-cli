@@ -1,0 +1,25 @@
+debug = true
+default_first_account = "Assets:Bank:HSBC"
+default_second_account = "Expenses:UnaccountedExpenses"
+csv_has_headers = true
+date_format="%d/%m/%Y"
+date_regex='\d{2}/\d{2}/\d{4}'
+
+[ledger_record_to_row]
+date = 0                  # Date
+payee = 1                 # Name
+second_account_hint = 1   # Name
+first_amount= 2           # Amount
+
+[[exclude_conditions]]
+column = 1              # transaction type
+value = "TRANSFER FROM HSBC"
+operation = "contains"
+
+[[payee_to_second_account.expense]]
+key = "TESCO"
+value = "Expenses:Groceries"
+
+[[payee_to_second_account.income]]
+key = "FACEBOOK UK"
+value = "Income:Facebook"

@@ -3,10 +3,13 @@ mod ledger_record;
 mod settings;
 
 use clap::Parser;
-use log::debug;
+use tracing::info;
+use tracing_subscriber;
+use tracing_core::Level;
 
 use bank2ledger::Bank2Ledger;
 use settings::Settings;
+use std::fs::File;
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
@@ -21,9 +24,12 @@ struct Args {
 }
 
 fn main() {
-    env_logger::init();
+    let file_appender = File::create("bank2ledger.log").unwrap();
+    let (non_blocking, _guard) = tracing_appender::non_blocking(file_appender);
+    tracing_subscriber::fmt().with_max_level(Level::DEBUG).with_writer(non_blocking).init();
+
     let args = Args::parse();
-    debug!("Config path: {}!", args.config);
+    info!("Config path: {}!", args.config);
     let settings = match Settings::new(&args.config) {
         Ok(settings) => settings,
         Err(error) => {
@@ -31,7 +37,7 @@ fn main() {
             return;
         }
     };
-    debug!("Bank CSV path: {}!", args.transactions_csv);
+    info!("Bank CSV path: {}!", args.transactions_csv);
 
     let bank2ledger = Bank2Ledger::new(settings, args.transactions_csv);
     bank2ledger.print();
