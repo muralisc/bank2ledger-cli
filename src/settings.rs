@@ -49,6 +49,7 @@ pub struct Settings {
     pub ledger_record_to_row: LedgerRecordToRow,
     pub exclude_conditions: Vec<ExcludeCondition>,
     pub payee_to_second_account: PayeeSecondAccountMapping,
+    pub minus_indicates_expense: Option<bool>,
 }
 
 impl Settings {

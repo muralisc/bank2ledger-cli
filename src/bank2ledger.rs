@@ -2,7 +2,7 @@ use crate::ledger_record::LedgerRecord;
 use crate::settings::Settings;
 use chrono::NaiveDate;
 use regex::RegexBuilder;
-use tracing::{info, debug};
+use tracing::{debug, info};
 
 pub struct Bank2Ledger {
     settings: Settings,
@@ -20,10 +20,13 @@ impl Bank2Ledger {
     fn get_date(&self, record: &csv::StringRecord) -> NaiveDate {
         let date_str = &record[self.settings.ledger_record_to_row.date].trim();
         debug!("date string : {}", date_str);
-        let re = RegexBuilder::new(&format!(r"{}", self.settings.date_regex)).build().unwrap();
+        let re = RegexBuilder::new(&format!(r"{}", self.settings.date_regex))
+            .build()
+            .unwrap();
         let cleaned_date = re.find(date_str).unwrap();
         debug!("date match: {}", cleaned_date.as_str());
-        return NaiveDate::parse_from_str(cleaned_date.as_str(), &self.settings.date_format).unwrap();
+        return NaiveDate::parse_from_str(cleaned_date.as_str(), &self.settings.date_format)
+            .unwrap();
     }
 
     fn get_payee(&self, record: &csv::StringRecord) -> String {
@@ -32,12 +35,30 @@ impl Bank2Ledger {
             .to_string();
     }
 
+    fn is_amount_expense(&self, amount: &str) -> bool {
+        let sign_present = '-' == amount.chars().nth(0).unwrap();
+        match &self.settings.minus_indicates_expense {
+            Some(minus_indicates_expense_value) => {
+                if *minus_indicates_expense_value {
+                    return sign_present;
+                } else {
+                    return !sign_present;
+                }
+            }
+            None => return sign_present,
+        }
+    }
+
     fn get_second_accoutn(&self, record: &csv::StringRecord) -> String {
         let second_account_hint = &record[self.settings.ledger_record_to_row.second_account_hint];
+        debug!(
+            "getting second account with hint: {:?}",
+            second_account_hint
+        );
         let amount = &record[self.settings.ledger_record_to_row.first_amount];
 
         let mapping;
-        if '-' == amount.chars().nth(0).unwrap() {
+        if self.is_amount_expense(amount) {
             mapping = &self.settings.payee_to_second_account.expense;
         } else {
             mapping = &self.settings.payee_to_second_account.income;
@@ -53,14 +74,34 @@ impl Bank2Ledger {
                     debug!("Match {:?}", mat);
                     return item.value.to_string();
                 }
-                None => debug!("None"),
+                None => debug!("Second account mapped to None"),
             }
         }
         return self.settings.default_second_account.to_string();
     }
 
     fn get_first_amount(&self, record: &csv::StringRecord) -> String {
-        return record[self.settings.ledger_record_to_row.first_amount].to_string();
+        // If minus_indicates_expense in csv we need to filp the sign
+
+        let amount_string = record[self.settings.ledger_record_to_row.first_amount].to_string();
+        debug!("Checking amount: {}", amount_string);
+        match &self.settings.minus_indicates_expense {
+            Some(minus_indicates_expense_value) => {
+                debug!(
+                    "minus_indicates_expense_value: {:?}",
+                    *minus_indicates_expense_value
+                );
+                if *minus_indicates_expense_value == false {
+                    // Flip
+                    if amount_string.chars().nth(0).unwrap() == '-' {
+                        return amount_string[1..].to_string();
+                    }
+                    return format!("-{}", amount_string);
+                }
+            }
+            None => (),
+        }
+        return amount_string;
     }
 
     fn get_first_amount_currency(&self, record: &csv::StringRecord) -> String {
@@ -75,7 +116,7 @@ impl Bank2Ledger {
     fn should_exclude(&self, record: &csv::StringRecord) -> bool {
         let mut should_exclude: bool = false;
         for exclude_condition in &self.settings.exclude_conditions {
-            debug!("Excluding condition: {:?}", exclude_condition);
+            debug!("Checking Excluding condition: {:?}", exclude_condition);
             let column_under_check = &record[exclude_condition.column];
             if exclude_condition.operation == "contains" {
                 if column_under_check.contains(&exclude_condition.value) {

@@ -1,0 +1,47 @@
+debug = true
+default_first_account = "Assets:Bank:Amex"
+default_second_account = "Expenses:UnaccountedExpenses"
+csv_has_headers = true
+date_format="%d/%m/%Y"
+date_regex='\d{2}/\d{2}/\d{4}'
+minus_indicates_expense=false
+
+[ledger_record_to_row]
+date = 0                  # Date
+payee = 1                 # Name
+# first_account= -1       # Static: Monzo
+second_account_hint = 1   # Name
+first_amount= 2           # Amount
+
+[[exclude_conditions]]
+column = 0              # transaction type
+value = "Date"
+operation = "contains"
+
+[[payee_to_second_account.expense]]
+key = "TESCO|MARKS &|BEST FOODS|SAINSBURY"
+value = "Expenses:Groceries"
+
+[[payee_to_second_account.expense]]
+key = "TFL TRAVEL|TRAVEL UP"
+value = "Expenses:Transport"
+
+[[payee_to_second_account.expense]]
+key = "BOOTS"
+value = "Expenses:Health"
+
+[[payee_to_second_account.expense]]
+key = "FACEBOOK RATHBONE|COSTA|IVY CAFE|ODEON|HOPPERS"
+value = "Expenses:Entertainment"
+
+[[payee_to_second_account.expense]]
+key = "AMAZON|AMZN"
+value = "Expenses:Utilities"
+
+[[payee_to_second_account.expense]]
+key = "IKEA"
+value = "Expenses:Posessions"
+
+[[payee_to_second_account.income]]
+key = "PAYMENT RECEIVED"
+value = "Liabilities:CreditCard"
