@@ -13,6 +13,11 @@ payee = 1                 # Name
 second_account_hint = 1   # Name
 first_amount= 2           # Amount
 
+[ledger_record_to_row.meta]
+description = 1           # Description
+address = 5               # Address
+transaction_type = 10
+
 [[exclude_conditions]]
 column = 0              # transaction type
 value = "Date"
@@ -23,19 +28,19 @@ key = "TESCO|MARKS &|BEST FOODS|SAINSBURY"
 value = "Expenses:Groceries"
 
 [[payee_to_second_account.expense]]
-key = "TFL TRAVEL|TRAVEL UP"
+key = "TFL TRAVEL|TRAVEL UP|Airways"
 value = "Expenses:Transport"
 
 [[payee_to_second_account.expense]]
-key = "BOOTS"
+key = "BOOTS|BARBER"
 value = "Expenses:Health"
 
 [[payee_to_second_account.expense]]
-key = "FACEBOOK RATHBONE|COSTA|IVY CAFE|ODEON|HOPPERS"
+key = "Kew Gardens|HARRODS|FACEBOOK RATHBONE|COSTA|IVY CAFE|ODEON|HOPPERS|PRET|Airbnb|THE IVY|MCDONALDS|STARBUCKS"
 value = "Expenses:Entertainment"
 
 [[payee_to_second_account.expense]]
-key = "AMAZON|AMZN"
+key = "AMAZON|AMZN|PRIMARK|Apple|Justpark|FISH"
 value = "Expenses:Utilities"
 
 [[payee_to_second_account.expense]]

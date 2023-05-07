@@ -38,7 +38,7 @@ key = "Uber"
 value = "Expenses:Transport"
 
 [[payee_to_second_account.expense]]
-key = "Amazon|Metropolitan Infrastru|Virgin Media|Lebara|Scottish Power|Royal Mail"
+key = "Digital Ocean|Hyperoptic|Amazon|Metropolitan Infrastru|Virgin Media|Lebara|Scottish Power|Royal Mail"
 value = "Expenses:Utilities"
 
 [[payee_to_second_account.expense]]
@@ -48,6 +48,10 @@ value = "Expenses:Housing"
 [[payee_to_second_account.expense]]
 key = "Hoppers|deliveroo|Netflix|ODEON"
 value = "Expenses:Entertainment"
+
+[[payee_to_second_account.expense]]
+key = "Optometrist"
+value = "Expenses:Health"
 
 [[payee_to_second_account.income]]
 key= "Sree Sobha Dharmarajan"
