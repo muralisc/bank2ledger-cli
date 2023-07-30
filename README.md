@@ -7,12 +7,19 @@ cargo run -- \
   > /home/murali/shared_folders/minimal/Pensieve/textfiles/ledger/ledger_2023_03Mar_schwab.ledger
 ```
 
-```
 # HSBC
+
+Command to run
+```
 cargo run -- \
     --config config/hsbc.toml \
     --transactions-csv ~/shared_folders/transfer_work/hsbc_TrasactionHistory_09_April_2023.csv
 ```
+How to get TrasactionHistory file?
+From web portal
+1. [Click](assets/hsbc/1_click.png)
+2. [Filter](assets/hsbc/2_Filter_for_dates.png)
+3. [Download](assets/hsbc/3_download.png)
 
 ```
 # Amex

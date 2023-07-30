@@ -21,6 +21,10 @@ operation = "contains"
 key = "TESCO"
 value = "Expenses:Groceries"
 
+[[payee_to_second_account.expense]]
+key = "AMERICAN EXP"
+value = "Liabilities:CreditCard"
+
 [[payee_to_second_account.income]]
 key = "FACEBOOK UK"
 value = "Income:Facebook"
