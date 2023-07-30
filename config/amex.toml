@@ -12,6 +12,7 @@ payee = 1                 # Name
 # first_account= -1       # Static: Monzo
 second_account_hint = 1   # Name
 first_amount= 2           # Amount
+first_amount_currency= 8  # Currency
 
 [ledger_record_to_row.meta]
 description = 1           # Description
