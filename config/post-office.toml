@@ -1,0 +1,32 @@
+debug = true
+default_first_account = "Assets:Bank:PostOfficeTravelMoneyCard"
+default_second_account = "Expenses:UnaccountedExpenses"
+csv_has_headers = true
+date_format="%d/%m/%Y"
+date_regex='\d{2}/\d{2}/\d{4}'
+
+[ledger_record_to_row]
+date = 0                  # Date
+payee = 2                 # Name
+# first_account= -1       # Static: Monzo
+second_account_hint = 2   # Name
+first_amount= 6           # Amount
+first_amount_currency= 5  # Currency
+
+[ledger_record_to_row.meta]
+description = 1           # Description
+address = 1               # Address
+transaction_type = 3
+
+[[exclude_conditions]]
+column = 0              # transaction type
+value = "Date"
+operation = "contains"
+
+[[payee_to_second_account.expense]]
+key = "LADUREE"
+value = "Expenses:Groceries"
+
+[[payee_to_second_account.income]]
+key = "Card Load"
+value = "Assets:Bank:Monzo"

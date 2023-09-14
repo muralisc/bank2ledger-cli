@@ -34,7 +34,7 @@ value = "0.00"
 operation = "equal"
 
 [[payee_to_second_account.expense]]
-key = "Uber|Transport for London"
+key = "Uber$|Postofficetravel|Transport for London"
 value = "Expenses:Transport"
 
 [[payee_to_second_account.expense]]
@@ -50,7 +50,7 @@ key = "L&Q|Barnet"
 value = "Expenses:Housing"
 
 [[payee_to_second_account.expense]]
-key = "Hoppers|deliveroo|Netflix|ODEON"
+key = "Hoppers|deliveroo|Netflix|ODEON|Costa Coffee|Uber Eats"
 value = "Expenses:Entertainment"
 
 [[payee_to_second_account.expense]]
@@ -64,6 +64,10 @@ value =  "Expenses:Allowance"
 [[payee_to_second_account.expense]]
 key = "Colindale Local|Kingsbury Fruit"
 value = "Expenses:Groceries"
+
+[[payee_to_second_account.expense]]
+key = "AMERICAN EXP"
+value = "Liabilities:CreditCard"
 
 [[payee_to_second_account.income]]
 key= "Sree Sobha Dharmarajan"

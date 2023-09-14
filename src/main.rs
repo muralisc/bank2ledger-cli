@@ -24,11 +24,12 @@ struct Args {
 }
 
 fn main() {
-    let file_appender = File::create("bank2ledger.log").unwrap();
-    let (non_blocking, _guard) = tracing_appender::non_blocking(file_appender);
+    let debug_file_appender = File::create("bank2ledger.debug.log").unwrap();
+    let (non_blocking_debug, _guard) = tracing_appender::non_blocking(debug_file_appender);
+
     tracing_subscriber::fmt()
         .with_max_level(Level::DEBUG)
-        .with_writer(non_blocking)
+        .with_writer(non_blocking_debug)
         .init();
 
     let args = Args::parse();
