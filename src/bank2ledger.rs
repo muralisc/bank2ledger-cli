@@ -2,7 +2,7 @@ use crate::ledger_record::LedgerRecord;
 use crate::settings::Settings;
 use chrono::NaiveDate;
 use regex::RegexBuilder;
-use tracing::{debug, info};
+use tracing::{debug, info, warn};
 
 pub struct Bank2Ledger {
     settings: Settings,
@@ -19,12 +19,12 @@ impl Bank2Ledger {
 
     fn get_date(&self, record: &csv::StringRecord) -> NaiveDate {
         let date_str = &record[self.settings.ledger_record_to_row.date].trim();
-        debug!("date string : {}", date_str);
+        debug!("Processing date string: {} of record", date_str);
         let re = RegexBuilder::new(&format!(r"{}", self.settings.date_regex))
             .build()
             .unwrap();
         let cleaned_date = re.find(date_str).unwrap();
-        debug!("date match: {}", cleaned_date.as_str());
+        debug!("Date matched with regex: {}", cleaned_date.as_str());
         return NaiveDate::parse_from_str(cleaned_date.as_str(), &self.settings.date_format)
             .unwrap();
     }
@@ -49,19 +49,24 @@ impl Bank2Ledger {
         }
     }
 
-    fn get_second_accoutn(&self, record: &csv::StringRecord) -> String {
+    fn get_second_account(&self, record: &csv::StringRecord) -> String {
         let second_account_hint = &record[self.settings.ledger_record_to_row.second_account_hint];
         debug!(
-            "getting second account with hint: {:?}",
+            "Getting second account with hint: {:?}",
             second_account_hint
         );
         let amount = &record[self.settings.ledger_record_to_row.first_amount];
 
         let mapping;
+        let is_amount_expense;
         if self.is_amount_expense(amount) {
             mapping = &self.settings.payee_to_second_account.expense;
+            is_amount_expense = true;
         } else {
+            // If the amount is an income it could be a refund. So lets concat both the income and
+            // expense maps. TODO
             mapping = &self.settings.payee_to_second_account.income;
+            is_amount_expense = false;
         }
 
         for item in mapping {
@@ -71,20 +76,39 @@ impl Bank2Ledger {
                 .unwrap();
             match re.find(second_account_hint) {
                 Some(mat) => {
-                    debug!("Match {:?}", mat);
+                    debug!("Match for second account {:?}", mat);
                     return item.value.to_string();
                 }
-                None => debug!("Second account mapped to None"),
+                None => debug!(
+                    "Second account mapped to None for hint {:?} for regex {:?}",
+                    second_account_hint, item.key
+                ),
             }
         }
+        warn!(
+            "Second account mapped to Default {} for hint {:?} and amount type \"{}\" ",
+            self.settings.default_second_account.to_string(),second_account_hint,
+            if is_amount_expense {
+                "Expense"
+            } else {
+                "Income"
+            }
+        );
         return self.settings.default_second_account.to_string();
     }
+
+    // First Amount is the amount used for a fist Account
+    // e.g:
+    // 2023-07-29 * "Crown Cafe Bar"
+    //  Assets:Bank:Monzo               -13.30 GBP
+    //                                  ^^^^^^^^^^ -------> first account
+    //  Expenses:UnaccountedExpenses
 
     fn get_first_amount(&self, record: &csv::StringRecord) -> String {
         // If minus_indicates_expense in csv we need to filp the sign
 
         let amount_string = record[self.settings.ledger_record_to_row.first_amount].to_string();
-        debug!("Checking amount: {}", amount_string);
+        debug!("Checking first amount: {}", amount_string);
         match &self.settings.minus_indicates_expense {
             Some(minus_indicates_expense_value) => {
                 debug!(
@@ -139,8 +163,9 @@ impl Bank2Ledger {
             .unwrap();
         for record in reader.records() {
             let record = record.unwrap();
-            debug!("record: {:?}!", record);
-            debug!("Length or row {}", record.len());
+            debug!("<========== Starting processsing of new record/row ============>");
+            debug!("Record : {:?}!", record);
+            debug!("Length of Row/Record {}", record.len());
 
             if self.should_exclude(&record) {
                 info!("Excluding row: {:?}", record);
@@ -153,7 +178,7 @@ impl Bank2Ledger {
                 self.settings.default_first_account.to_string(),
                 self.get_first_amount(&record),
                 self.get_first_amount_currency(&record),
-                self.get_second_accoutn(&record),
+                self.get_second_account(&record),
             );
             lr.print();
         }
