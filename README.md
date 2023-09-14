@@ -21,7 +21,8 @@ cargo run -- \
 ```
 cargo run -- \
     --config ~/src/bank2ledger-cli/config/hsbc.toml \
-    --transactions-csv ~/shared_folders/transfer_work/hsbc_TrasactionHistory_09_April_2023.csv
+    --transactions-csv ~/shared_folders/transfer_work/hsbc_TrasactionHistory_09_April_2023.csv \
+    > /home/murali/shared_folders/minimal/Pensieve/textfiles/ledger/ledger_2023_03Mar_hsbc.ledger
 ```
 How to get TrasactionHistory file?
 From web portal
@@ -39,7 +40,8 @@ Statements & Activity > Previous Billing Periods > window
 ```
 cargo run -- \
     --config ~/src/bank2ledger-cli/config/amex.toml \
-    --transactions-csv ~/Downloads/amex-dec.csv > ~/Downloads/ledger_2022_12Dec_amex.txt
+    --transactions-csv ~/Downloads/amex-dec.csv > ~/Downloads/ledger_2022_12Dec_amex.txt \
+    > /home/murali/shared_folders/minimal/Pensieve/textfiles/ledger/ledger_2023_03Mar_amex.ledger
 ```
 
 ## Monzo
@@ -48,7 +50,8 @@ cargo run -- \
 ```
 cargo run -- \
     --config ~/src/bank2ledger-cli/config/monzo.toml \
-    --transactions-csv ~/Downloads/Monzo Data Export - July.csv
+    --transactions-csv ~/Downloads/Monzo Data Export - July.csv \
+    > /home/murali/shared_folders/minimal/Pensieve/textfiles/ledger/ledger_2023_03Mar_monzo.ledger
 ```
 
 
