@@ -34,12 +34,16 @@ value = "0.00"
 operation = "equal"
 
 [[payee_to_second_account.expense]]
-key = "Uber"
+key = "Uber|Transport for London"
 value = "Expenses:Transport"
 
 [[payee_to_second_account.expense]]
 key = "Digital Ocean|Hyperoptic|Amazon|Metropolitan Infrastru|Virgin Media|Lebara|Scottish Power|Royal Mail"
 value = "Expenses:Utilities"
+
+[[payee_to_second_account.expense]]
+key = "AMERICAN EXP"
+value = "Liabilities:CreditCard"
 
 [[payee_to_second_account.expense]]
 key = "L&Q|Barnet"
@@ -50,8 +54,16 @@ key = "Hoppers|deliveroo|Netflix|ODEON"
 value = "Expenses:Entertainment"
 
 [[payee_to_second_account.expense]]
-key = "Optometrist"
+key = "Optometrist|Christian Art"
 value = "Expenses:Health"
+
+[[payee_to_second_account.expense]]
+key= "Sree Sobha Dharmarajan"
+value =  "Expenses:Allowance"
+
+[[payee_to_second_account.expense]]
+key = "Colindale Local|Kingsbury Fruit"
+value = "Expenses:Groceries"
 
 [[payee_to_second_account.income]]
 key= "Sree Sobha Dharmarajan"

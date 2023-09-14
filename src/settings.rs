@@ -1,6 +1,8 @@
 use config::{Config, ConfigError, Environment, File};
 use serde::Deserialize;
 
+// Configs used to map a csv to ledger records
+
 #[derive(Debug, Deserialize)]
 pub struct Meta {
     pub description: usize,
@@ -8,13 +10,22 @@ pub struct Meta {
     pub transaction_type: usize,
 }
 
+// More like csv row to ledger record
+// Setting to map a csv row to ledger record
 #[derive(Debug, Deserialize)]
 pub struct LedgerRecordToRow {
+    // CSV column containing the date
     pub date: usize,
+    // CSV column containing the payee
     pub payee: usize,
+    // CSV column used to find the first account
+    // Usually this is not set and is taken from
+    // default_first_account setting in global option
     pub first_account: Option<usize>,
     pub second_account_hint: usize,
+    // CSV column containing the first amount
     pub first_amount: usize,
+    // CSV column containing the first amount currency
     pub first_amount_currency: Option<usize>,
     pub meta: Option<Meta>,
 }

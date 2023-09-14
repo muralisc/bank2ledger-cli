@@ -21,6 +21,9 @@ From web portal
 2. [Filter](assets/hsbc/2_Filter_for_dates.png)
 3. [Download](assets/hsbc/3_download.png)
 
+
+
+Statements & Activity > Previous Billing Periods > window
 ```
 # Amex
 cargo run -- \
