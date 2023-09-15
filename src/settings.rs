@@ -37,7 +37,7 @@ pub struct ExcludeCondition {
     pub operation: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Mapping {
     pub key: String,
     pub value: String,

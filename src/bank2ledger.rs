@@ -1,5 +1,5 @@
 use crate::ledger_record::LedgerRecord;
-use crate::settings::Settings;
+use crate::settings::{Settings,Mapping};
 use chrono::NaiveDate;
 use regex::RegexBuilder;
 use tracing::{debug, info, warn};
@@ -57,15 +57,14 @@ impl Bank2Ledger {
         );
         let amount = &record[self.settings.ledger_record_to_row.first_amount];
 
-        let mapping;
-        let is_amount_expense;
-        if self.is_amount_expense(amount) {
-            mapping = &self.settings.payee_to_second_account.expense;
-            is_amount_expense = true;
-        } else {
-            // If the amount is an income it could be a refund. So lets concat both the income and
-            // expense maps. TODO
-            mapping = &self.settings.payee_to_second_account.income;
+        let mut mapping : Vec<Mapping> = self.settings.payee_to_second_account.expense.clone();
+        let mut is_amount_expense = true;
+        if !self.is_amount_expense(amount) {
+            // If the amount is an income it could be a refund.
+            // So lets concat both the income and expense maps.
+            let income_mapping = self.settings.payee_to_second_account.income.clone();
+            mapping.extend(income_mapping);
+            debug!("Income Mapping {:?}", mapping);
             is_amount_expense = false;
         }
 
