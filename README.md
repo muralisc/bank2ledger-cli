@@ -8,6 +8,10 @@ From [ledger-cli.org](https://ledger-cli.org/),
 > Ledger is a powerful, double-entry accounting system that is accessed from the
 UNIX command-line.
 
+However to use it we need out transactions to be encoded in ledger format. 
+This tool lets us do that for any bank / finance handlers (Insurance, Stock
+Brokers) who can furnish a csv of transactions
+
 ### How does it work
 
 For a transaction snippet from Monzo csv:
