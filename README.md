@@ -5,7 +5,7 @@
 
 ### Get CSV
 
-Schwab > History
+Schwab > History > Export
 
 ### Command to run
 ```
@@ -24,7 +24,7 @@ cargo run -- \
     --transactions-csv ~/shared_folders/transfer_work/hsbc_TrasactionHistory_09_April_2023.csv \
     > /home/murali/shared_folders/minimal/Pensieve/textfiles/ledger/ledger_2023_03Mar_hsbc.ledger
 ```
-How to get TrasactionHistory file?
+How to get TrasactionHistory file for HSBC ?
 From web portal
 1. [Click](assets/hsbc/1_click.png)
 2. [Filter](assets/hsbc/2_Filter_for_dates.png)
@@ -34,7 +34,10 @@ From web portal
 
 ## Amex
 
-Statements & Activity > Previous Billing Periods > window
+
+How to get TrasactionHistory file for AMEX ?
+
+- [Statements & Activity] > Previous Billing Periods > choose window (11 Jul to 10 Aug) > CSV (Check for all details)
 
 ### Command to run
 ```

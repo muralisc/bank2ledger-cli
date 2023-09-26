@@ -10,7 +10,6 @@ date = 0                  # Date
 payee = 1                 # Name
 second_account_hint = 1   # Name
 first_amount= 2           # Amount
-first_amount_currency= 8  # Currency
 
 [[exclude_conditions]]
 column = 1              # transaction type

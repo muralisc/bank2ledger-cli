@@ -12,7 +12,7 @@ payee = 1                 # Name
 # first_account= -1       # Static: Monzo
 second_account_hint = 1   # Name
 first_amount= 2           # Amount
-first_amount_currency= 8  # Currency
+# first_amount_currency= 8  # Currency
 
 [ledger_record_to_row.meta]
 description = 1           # Description
@@ -25,29 +25,51 @@ value = "Date"
 operation = "contains"
 
 [[payee_to_second_account.expense]]
-key = "TESCO|MARKS &|BEST FOODS|SAINSBURY"
+key = "LEETCODE"
+value = "Expenses:Career"
+
+[[payee_to_second_account.expense]]
+key = "MEMBERSHIP FEE|INTEREST CHARGE"
+value = "Expenses:Amex:Interest"
+
+[[payee_to_second_account.expense]]
+key = "TESCO|MARKS (&|AND)|BEST FOODS|SAINSBURY|GRAINMILL|WAITROSE|KERALATASTE"
 value = "Expenses:Groceries"
 
 [[payee_to_second_account.expense]]
-key = "TFL TRAVEL|TRAVEL UP|Airways"
+key = "TFL TRAVEL|TRAVEL UP|Airways|OYSTERCARD"
 value = "Expenses:Transport"
 
 [[payee_to_second_account.expense]]
-key = "BOOTS|BARBER"
+key = "BOOTS|BARBER|OURARING"
 value = "Expenses:Health"
 
 [[payee_to_second_account.expense]]
-key = "Kew Gardens|HARRODS|FACEBOOK RATHBONE|COSTA|IVY CAFE|ODEON|HOPPERS|PRET|Airbnb|THE IVY|MCDONALDS|STARBUCKS"
+key = "DELIVEROO|Kew Gardens|HARRODS|LONDON EYE|WESTMINSTER ABBEY|FACEBOOK RATHBONE"
 value = "Expenses:Entertainment"
 
 [[payee_to_second_account.expense]]
-key = "AMAZON|AMZN|PRIMARK|Apple|Justpark|FISH"
+key = "COSTA|IVY CAFE|ODEON|HOPPERS|PRET|Airbnb|THE IVY|MCDONALDS|STARBUCKS|CAFF?E|[CK]OFFEE"
+value = "Expenses:Entertainment"
+
+[[payee_to_second_account.expense]]
+key = "LEON|STREET FOOD|CHÂTEAU DE VERSAILLES|WENZELS"
+value = "Expenses:Entertainment"
+
+
+[[payee_to_second_account.expense]]
+key = "AMAZON|AMZN|PRIMARK|Apple|Justpark|FISH|LEBARA|DOXZOO"
 value = "Expenses:Utilities"
 
 [[payee_to_second_account.expense]]
-key = "IKEA"
+key = "IKEA|WATERSTONE|MECHBOARDS|PILLOWS"
 value = "Expenses:Posessions"
+
+[[payee_to_second_account.expense]]
+key= "POST OFFICE"
+value= "Assets:Bank:PostOfficeTravelMoneyCard"
 
 [[payee_to_second_account.income]]
 key = "PAYMENT RECEIVED"
 value = "Liabilities:CreditCard"
+

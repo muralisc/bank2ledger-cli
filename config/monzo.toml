@@ -58,6 +58,10 @@ key = "Hoppers|deliveroo|Netflix|ODEON|Burger King|Crown Cafe Bar|Costa Coffee|U
 value = "Expenses:Entertainment"
 
 [[payee_to_second_account.expense]]
+key = "Champ De Mars"
+value = "Expenses:Entertainment"
+
+[[payee_to_second_account.expense]]
 key = "Optometrist|Christian Art"
 value = "Expenses:Health"
 

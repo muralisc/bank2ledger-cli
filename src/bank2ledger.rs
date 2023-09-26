@@ -1,5 +1,5 @@
 use crate::ledger_record::LedgerRecord;
-use crate::settings::{Settings,Mapping};
+use crate::settings::{Mapping, Settings};
 use chrono::NaiveDate;
 use regex::RegexBuilder;
 use tracing::{debug, info, warn};
@@ -57,7 +57,7 @@ impl Bank2Ledger {
         );
         let amount = &record[self.settings.ledger_record_to_row.first_amount];
 
-        let mut mapping : Vec<Mapping> = self.settings.payee_to_second_account.expense.clone();
+        let mut mapping: Vec<Mapping> = self.settings.payee_to_second_account.expense.clone();
         let mut is_amount_expense = true;
         if !self.is_amount_expense(amount) {
             // If the amount is an income it could be a refund.
@@ -85,13 +85,14 @@ impl Bank2Ledger {
             }
         }
         warn!(
-            "Second account mapped to Default {} for hint {:?} and amount type \"{}\" ",
+            "Second account mapped to Default {} for hint {:?} and amount type \"{}\", and amount {}",
             self.settings.default_second_account.to_string(),second_account_hint,
             if is_amount_expense {
                 "Expense"
             } else {
                 "Income"
-            }
+            },
+            amount
         );
         return self.settings.default_second_account.to_string();
     }
@@ -155,11 +156,15 @@ impl Bank2Ledger {
     }
 
     pub fn print(&self) {
-        let mut reader = csv::ReaderBuilder::new()
+        let mut reader = match csv::ReaderBuilder::new()
             .has_headers(false)
             .flexible(true)
             .from_path(&self.transactions_file_path)
-            .unwrap();
+        {
+            Ok(file) => file,
+            Err(error) => panic!("Problem opening the file: {:?}", error),
+        };
+
         for record in reader.records() {
             let record = record.unwrap();
             debug!("<========== Starting processsing of new record/row ============>");
