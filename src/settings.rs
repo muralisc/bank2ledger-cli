@@ -6,7 +6,7 @@ use serde::Deserialize;
 #[derive(Debug, Deserialize)]
 pub struct Meta {
     pub description: usize,
-    pub address: usize,
+    pub address: Option<usize>,
     pub transaction_type: usize,
 }
 

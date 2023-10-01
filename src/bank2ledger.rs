@@ -19,7 +19,7 @@ impl Bank2Ledger {
 
     fn get_date(&self, record: &csv::StringRecord) -> NaiveDate {
         let date_str = &record[self.settings.ledger_record_to_row.date].trim();
-        debug!("Processing date string: {} of record", date_str);
+        debug!("Processing date string: \"{}\" of record", date_str);
         let re = RegexBuilder::new(&format!(r"{}", self.settings.date_regex))
             .build()
             .unwrap();
