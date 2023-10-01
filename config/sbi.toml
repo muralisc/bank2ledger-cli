@@ -1,0 +1,34 @@
+debug = true
+default_first_account = "Assets:Bank:SBI:Savings"
+default_second_account = "Expenses:UnaccountedExpenses"
+csv_has_headers = true
+date_format="%d %b %Y"
+date_regex='\d{1,2} [A-Z][a-z]{2} \d{4}'
+first_amount_currency_default='INR'
+
+[ledger_record_to_row]
+date = 0                  # Date
+payee = 2                 # Name
+# first_account= -1       # Static: Monzo
+second_account_hint = 2   # Name
+first_amount= 5           # Amount
+first_amount_debit = 4
+
+[ledger_record_to_row.meta]
+description = 3           # Description
+address =  3              # Address
+transaction_type = 3      # type
+
+[[exclude_conditions]]
+column = 3              # transaction type
+value = "asdf"
+operation = "contains"
+
+[[payee_to_second_account.expense]]
+key = "Stitch Fix|Kprepublic"
+value = "Expenses:Posessions"
+
+[[payee_to_second_account.income]]
+key= "Sree Sobha Dharmarajan"
+value =  "Income:LivingShare"
+

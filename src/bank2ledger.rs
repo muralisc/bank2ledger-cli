@@ -103,19 +103,36 @@ impl Bank2Ledger {
     //  Assets:Bank:Monzo               -13.30 GBP
     //                                  ^^^^^^^^^^ -------> first account
     //  Expenses:UnaccountedExpenses
-
     fn get_first_amount(&self, record: &csv::StringRecord) -> String {
+        return match &self.settings.ledger_record_to_row.first_amount_debit {
+            Some(first_amount_debit_col) => {
+                let debit_amount_string = record[*first_amount_debit_col].to_string();
+                if debit_amount_string.trim().is_empty() {
+                    self.get_first_amount_single_field(record, self.settings.ledger_record_to_row.first_amount, Some(true))
+                } else {
+                    self.get_first_amount_single_field(record, *first_amount_debit_col, Some(false))
+                }
+            },
+            // CSV has only a single column with both Credit and Debit
+            None => self.get_first_amount_single_field(record, self.settings.ledger_record_to_row.first_amount, self.settings.minus_indicates_expense)
+        }
+    }
+
+    fn get_first_amount_single_field(&self, record: &csv::StringRecord, amount_col: usize, minus_indicates_expense: Option<bool>) -> String {
+        // Usually -(minus) indicates money leaving accout
+        // But some banks have 'minum' in amout which indicates 
+        // income, in those cases
         // If minus_indicates_expense in csv we need to filp the sign
 
-        let amount_string = record[self.settings.ledger_record_to_row.first_amount].to_string();
+        let amount_string = record[amount_col].to_string();
         debug!("Checking first amount: {}", amount_string);
-        match &self.settings.minus_indicates_expense {
+        match minus_indicates_expense {
             Some(minus_indicates_expense_value) => {
                 debug!(
                     "minus_indicates_expense_value: {:?}",
-                    *minus_indicates_expense_value
+                    minus_indicates_expense_value
                 );
-                if *minus_indicates_expense_value == false {
+                if minus_indicates_expense_value == false {
                     // Flip
                     if amount_string.chars().nth(0).unwrap() == '-' {
                         return amount_string[1..].to_string();
@@ -130,7 +147,7 @@ impl Bank2Ledger {
 
     fn get_first_amount_currency(&self, record: &csv::StringRecord) -> String {
         match self.settings.ledger_record_to_row.first_amount_currency {
-            None => return "GBP".to_string(),
+            None => return self.settings.first_amount_currency_default.to_string(),
             Some(first_amount_currency) => {
                 return record[first_amount_currency].to_string();
             }
@@ -157,7 +174,7 @@ impl Bank2Ledger {
 
     pub fn print(&self) {
         let mut reader = match csv::ReaderBuilder::new()
-            .has_headers(false)
+            .has_headers(self.settings.csv_has_headers)
             .flexible(true)
             .from_path(&self.transactions_file_path)
         {

@@ -23,8 +23,11 @@ pub struct LedgerRecordToRow {
     // default_first_account setting in global option
     pub first_account: Option<usize>,
     pub second_account_hint: usize,
-    // CSV column containing the first amount
+    // CSV column containing the first amount 
+    // (if credit and debit are in multiple columns,
+    // this has credit column)
     pub first_amount: usize,
+    pub first_amount_debit: Option<usize>,
     // CSV column containing the first amount currency
     pub first_amount_currency: Option<usize>,
     pub meta: Option<Meta>,
@@ -57,6 +60,7 @@ pub struct Settings {
     pub csv_has_headers: bool,
     pub date_format: String,
     pub date_regex: String,
+    pub first_amount_currency_default: String,
     pub ledger_record_to_row: LedgerRecordToRow,
     pub exclude_conditions: Vec<ExcludeCondition>,
     pub payee_to_second_account: PayeeSecondAccountMapping,
