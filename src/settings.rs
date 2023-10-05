@@ -23,7 +23,7 @@ pub struct LedgerRecordToRow {
     // default_first_account setting in global option
     pub first_account: Option<usize>,
     pub second_account_hint: usize,
-    // CSV column containing the first amount 
+    // CSV column containing the first amount
     // (if credit and debit are in multiple columns,
     // this has credit column)
     pub first_amount: usize,

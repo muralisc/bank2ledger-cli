@@ -40,7 +40,7 @@ impl Bank2Ledger {
             Some(first_amount_debit_col) => {
                 let debit_amount_string = record[*first_amount_debit_col].to_string();
                 return !debit_amount_string.trim().is_empty();
-            },
+            }
             None => {
                 let amount = &record[self.settings.ledger_record_to_row.first_amount];
                 return self.is_amount_expense(amount);
@@ -119,19 +119,32 @@ impl Bank2Ledger {
             Some(first_amount_debit_col) => {
                 let debit_amount_string = record[*first_amount_debit_col].to_string();
                 if debit_amount_string.trim().is_empty() {
-                    self.get_first_amount_single_field(record, self.settings.ledger_record_to_row.first_amount, Some(true))
+                    self.get_first_amount_single_field(
+                        record,
+                        self.settings.ledger_record_to_row.first_amount,
+                        Some(true),
+                    )
                 } else {
                     self.get_first_amount_single_field(record, *first_amount_debit_col, Some(false))
                 }
-            },
+            }
             // CSV has only a single column with both Credit and Debit
-            None => self.get_first_amount_single_field(record, self.settings.ledger_record_to_row.first_amount, self.settings.minus_indicates_expense)
-        }
+            None => self.get_first_amount_single_field(
+                record,
+                self.settings.ledger_record_to_row.first_amount,
+                self.settings.minus_indicates_expense,
+            ),
+        };
     }
 
-    fn get_first_amount_single_field(&self, record: &csv::StringRecord, amount_col: usize, minus_indicates_expense: Option<bool>) -> String {
+    fn get_first_amount_single_field(
+        &self,
+        record: &csv::StringRecord,
+        amount_col: usize,
+        minus_indicates_expense: Option<bool>,
+    ) -> String {
         // Usually -(minus) indicates money leaving accout
-        // But some banks have 'minum' in amout which indicates 
+        // But some banks have 'minum' in amout which indicates
         // income, in those cases
         // If minus_indicates_expense in csv we need to filp the sign
 
