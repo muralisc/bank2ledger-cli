@@ -5,6 +5,7 @@ csv_has_headers = true
 date_format="%d %b %Y"
 date_regex='\d{1,2} [A-Z][a-z]{2} \d{4}'
 first_amount_currency_default='INR'
+delimiter_text = "tab"
 
 [ledger_record_to_row]
 date = 0                  # Date

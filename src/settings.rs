@@ -65,6 +65,7 @@ pub struct Settings {
     pub exclude_conditions: Vec<ExcludeCondition>,
     pub payee_to_second_account: PayeeSecondAccountMapping,
     pub minus_indicates_expense: Option<bool>,
+    pub delimiter_text: Option<String>,
 }
 
 impl Settings {
