@@ -35,6 +35,19 @@ impl Bank2Ledger {
             .to_string();
     }
 
+    fn is_record_expense(&self, record: &csv::StringRecord) -> bool {
+        match &self.settings.ledger_record_to_row.first_amount_debit {
+            Some(first_amount_debit_col) => {
+                let debit_amount_string = record[*first_amount_debit_col].to_string();
+                return !debit_amount_string.trim().is_empty();
+            },
+            None => {
+                let amount = &record[self.settings.ledger_record_to_row.first_amount];
+                return self.is_amount_expense(amount);
+            }
+        }
+    }
+
     fn is_amount_expense(&self, amount: &str) -> bool {
         let sign_present = '-' == amount.chars().nth(0).unwrap();
         match &self.settings.minus_indicates_expense {
@@ -58,14 +71,12 @@ impl Bank2Ledger {
         let amount = &record[self.settings.ledger_record_to_row.first_amount];
 
         let mut mapping: Vec<Mapping> = self.settings.payee_to_second_account.expense.clone();
-        let mut is_amount_expense = true;
-        if !self.is_amount_expense(amount) {
+        if !self.is_record_expense(record) {
             // If the amount is an income it could be a refund.
             // So lets concat both the income and expense maps.
             let income_mapping = self.settings.payee_to_second_account.income.clone();
             mapping.extend(income_mapping);
             debug!("Income Mapping {:?}", mapping);
-            is_amount_expense = false;
         }
 
         for item in mapping {
@@ -87,7 +98,7 @@ impl Bank2Ledger {
         warn!(
             "Second account mapped to Default {} for hint {:?} and amount type \"{}\", and amount {}",
             self.settings.default_second_account.to_string(),second_account_hint,
-            if is_amount_expense {
+            if self.is_record_expense(record) {
                 "Expense"
             } else {
                 "Income"

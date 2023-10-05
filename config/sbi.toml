@@ -25,10 +25,18 @@ value = "asdf"
 operation = "contains"
 
 [[payee_to_second_account.expense]]
-key = "Stitch Fix|Kprepublic"
-value = "Expenses:Posessions"
+key = "LIC BILL"
+value = "Assets:LongTerm:LIC"
+
+[[payee_to_second_account.expense]]
+key = "Annual Locker"
+value = "Expenses:Utilities"
 
 [[payee_to_second_account.income]]
-key= "Sree Sobha Dharmarajan"
-value =  "Income:LivingShare"
+key= "TRANSFER-UPI"
+value =  "Income:Unaccounted"
+
+[[payee_to_second_account.income]]
+key= "TRANSFER-UPI|TRANSFER-NEFT"
+value =  "Income:Unaccounted"
 
