@@ -200,7 +200,7 @@ impl Bank2Ledger {
         let mut reader = match csv::ReaderBuilder::new()
             .has_headers(self.settings.csv_has_headers)
             .flexible(true)
-            .delimiter(b',') // TODO use delimiter_text here
+            .delimiter(self.settings.get_delimiter())
             .from_path(&self.transactions_file_path)
         {
             Ok(file) => file,

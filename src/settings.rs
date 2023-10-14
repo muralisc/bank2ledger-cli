@@ -1,5 +1,6 @@
 use config::{Config, ConfigError, Environment, File};
 use serde::Deserialize;
+use std::collections::HashMap;
 
 // Configs used to map a csv to ledger records
 
@@ -65,7 +66,7 @@ pub struct Settings {
     pub exclude_conditions: Vec<ExcludeCondition>,
     pub payee_to_second_account: PayeeSecondAccountMapping,
     pub minus_indicates_expense: Option<bool>,
-    pub delimiter_text: Option<String>,
+    pub delimiter: Option<String>,
 }
 
 impl Settings {
@@ -78,5 +79,16 @@ impl Settings {
 
         // You can deserialize (and thus freeze) the entire configuration as
         s.try_deserialize()
+    }
+
+    pub fn get_delimiter(&self) -> u8 {
+        let delimiter_map: HashMap<&str, u8> =
+            HashMap::from([(",", b','), ("comma", b','), ("tab", b'\t')]);
+        match &self.delimiter {
+            None => delimiter_map["comma"],
+            Some(delimiter_string) => {
+                delimiter_map[&delimiter_string as &str]
+            }
+        }
     }
 }
