@@ -19,6 +19,8 @@ address = 1               # Address
 transaction_type = 3
 
 [[exclude_conditions]]
+type = "ColumnContainsValue"
+[exclude_conditions.content]
 column = 0              # transaction type
 value = "Date"
 operation = "contains"

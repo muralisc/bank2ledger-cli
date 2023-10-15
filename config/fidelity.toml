@@ -17,6 +17,8 @@ description = 7          # Description
 transaction_type = 5      # type
 
 [[exclude_conditions]]
+type = "ColumnContainsValue"
+[exclude_conditions.content]
 column = 3              # transaction type
 value = "Cash Out"
 operation = "contains"

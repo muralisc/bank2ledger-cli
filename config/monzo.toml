@@ -20,16 +20,22 @@ address = 12              # Address
 transaction_type = 3      # type
 
 [[exclude_conditions]]
+type = "ColumnContainsValue"
+[exclude_conditions.content]
 column = 3              # transaction type
 value = "Pot"
 operation = "contains"
 
 [[exclude_conditions]]
+type = "ColumnContainsValue"
+[exclude_conditions.content]
 column = 1              # transaction type
 value = "Date"
 operation = "contains"
 
 [[exclude_conditions]]
+type = "ColumnContainsValue"
+[exclude_conditions.content]
 column = 7
 value = "0.00"
 operation = "equal"

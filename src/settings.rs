@@ -28,6 +28,7 @@ pub struct LedgerRecordToRow {
     // (if credit and debit are in multiple columns,
     // this has credit column)
     pub first_amount: usize,
+    // Only used if there is a separate column for debit
     pub first_amount_debit: Option<usize>,
     // CSV column containing the first amount currency
     pub first_amount_currency: Option<usize>,
@@ -35,10 +36,14 @@ pub struct LedgerRecordToRow {
 }
 
 #[derive(Debug, Deserialize)]
-pub struct ExcludeCondition {
-    pub column: usize,
-    pub value: String,
-    pub operation: String,
+#[serde(tag = "type", content = "content")]
+pub enum ExcludeCondition {
+    ColumnContainsValue {
+        column: usize,
+        value: String,
+        operation: String,
+    },
+    RecordLen(usize),
 }
 
 #[derive(Debug, Deserialize, Clone)]
@@ -86,9 +91,7 @@ impl Settings {
             HashMap::from([(",", b','), ("comma", b','), ("tab", b'\t')]);
         match &self.delimiter {
             None => delimiter_map["comma"],
-            Some(delimiter_string) => {
-                delimiter_map[&delimiter_string as &str]
-            }
+            Some(delimiter_string) => delimiter_map[&delimiter_string as &str],
         }
     }
 }

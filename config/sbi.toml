@@ -5,7 +5,7 @@ csv_has_headers = true
 date_format="%d %b %Y"
 date_regex='\d{1,2} [A-Z][a-z]{2} \d{4}'
 first_amount_currency_default='INR'
-delimiter_text = "tab"
+delimiter = "tab"
 
 [ledger_record_to_row]
 date = 0                  # Date
@@ -21,9 +21,15 @@ address =  3              # Address
 transaction_type = 3      # type
 
 [[exclude_conditions]]
-column = 3              # transaction type
-value = "asdf"
+type = "ColumnContainsValue"
+[exclude_conditions.content]
+column = 0
+value = "Address"
 operation = "contains"
+
+[[exclude_conditions]]
+type = "RecordLen"
+content = 7
 
 [[payee_to_second_account.expense]]
 key = "LIC BILL"
@@ -38,6 +44,14 @@ key= "TRANSFER-UPI"
 value =  "Income:Unaccounted"
 
 [[payee_to_second_account.income]]
+key= "BULK POSTING"
+value =  "Income:Zerodha:Divident"
+
+[[payee_to_second_account.income]]
 key= "TRANSFER-UPI|TRANSFER-NEFT"
 value =  "Income:Unaccounted"
+
+[[payee_to_second_account.income]]
+key= "CREDIT INTEREST"
+value =  "Income:SBI:Interest"
 

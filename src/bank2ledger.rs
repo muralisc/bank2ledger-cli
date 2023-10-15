@@ -1,5 +1,5 @@
 use crate::ledger_record::LedgerRecord;
-use crate::settings::{Mapping, Settings};
+use crate::settings::{ExcludeCondition, Mapping, Settings};
 use chrono::NaiveDate;
 use regex::RegexBuilder;
 use tracing::{debug, info, warn};
@@ -115,17 +115,16 @@ impl Bank2Ledger {
     //                                  ^^^^^^^^^^ -------> first account
     //  Expenses:UnaccountedExpenses
     fn get_first_amount(&self, record: &csv::StringRecord) -> String {
-        return match &self.settings.ledger_record_to_row.first_amount_debit {
+        return match self.settings.ledger_record_to_row.first_amount_debit {
             Some(first_amount_debit_col) => {
-                let debit_amount_string = record[*first_amount_debit_col].to_string();
-                if debit_amount_string.trim().is_empty() {
+                if record[first_amount_debit_col].trim().is_empty() {
                     self.get_first_amount_single_field(
                         record,
                         self.settings.ledger_record_to_row.first_amount,
                         Some(true),
                     )
                 } else {
-                    self.get_first_amount_single_field(record, *first_amount_debit_col, Some(false))
+                    self.get_first_amount_single_field(record, first_amount_debit_col, Some(false))
                 }
             }
             // CSV has only a single column with both Credit and Debit
@@ -182,14 +181,32 @@ impl Bank2Ledger {
         let mut should_exclude: bool = false;
         for exclude_condition in &self.settings.exclude_conditions {
             debug!("Checking Excluding condition: {:?}", exclude_condition);
-            let column_under_check = &record[exclude_condition.column];
-            if exclude_condition.operation == "contains" {
-                if column_under_check.contains(&exclude_condition.value) {
-                    should_exclude = true;
+            match exclude_condition {
+                ExcludeCondition::ColumnContainsValue {
+                    column,
+                    value,
+                    operation,
+                } => {
+                    let column_under_check = &record[*column];
+                    if operation == "contains" {
+                        if column_under_check.contains(&*value.as_str()) {
+                            should_exclude = true;
+                        }
+                    } else if operation == "equal" {
+                        if column_under_check == *value {
+                            should_exclude = true;
+                        }
+                    }
                 }
-            } else if exclude_condition.operation == "equal" {
-                if column_under_check == &exclude_condition.value {
-                    should_exclude = true;
+                ExcludeCondition::RecordLen(record_len) => {
+                    debug!(
+                        "Excluding condition: {:?}, record len : {}",
+                        exclude_condition,
+                        record.len()
+                    );
+                    if *record_len != record.len() {
+                        should_exclude = true
+                    }
                 }
             }
         }

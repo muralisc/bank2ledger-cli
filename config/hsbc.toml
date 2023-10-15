@@ -12,6 +12,8 @@ second_account_hint = 1   # Name
 first_amount= 2           # Amount
 
 [[exclude_conditions]]
+type = "ColumnContainsValue"
+[exclude_conditions.content]
 column = 1              # transaction type
 value = "TRANSFER FROM HSBC"
 operation = "contains"
