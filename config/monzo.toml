@@ -45,7 +45,7 @@ key = "Stitch Fix|Kprepublic"
 value = "Expenses:Posessions"
 
 [[payee_to_second_account.expense]]
-key = "Uber$|Postofficetravel|Transport for London"
+key = "Uber$|Postofficetravel|Transport for London|Railcard"
 value = "Expenses:Transport"
 
 [[payee_to_second_account.expense]]
