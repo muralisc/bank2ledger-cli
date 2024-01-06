@@ -201,10 +201,10 @@ impl Bank2Ledger {
                 ExcludeCondition::RecordLen(record_len) => {
                     debug!(
                         "Excluding condition: {:?}, record len : {}",
-                        exclude_condition,
+                        record_len,
                         record.len()
                     );
-                    if *record_len != record.len() {
+                    if *record_len == record.len() {
                         should_exclude = true
                     }
                 }

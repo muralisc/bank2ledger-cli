@@ -24,12 +24,48 @@ transaction_type = 3      # type
 type = "ColumnContainsValue"
 [exclude_conditions.content]
 column = 0
-value = "Address"
+operation = "equal"
+value = ""
+
+[[exclude_conditions]]
+type = "ColumnContainsValue"
+[exclude_conditions.content]
+column = 0
 operation = "contains"
+value = "Address"
+
+[[exclude_conditions]]
+type = "ColumnContainsValue"
+[exclude_conditions.content]
+column = 0
+operation = "contains"
+value = "       "
+
+[[exclude_conditions]]
+type = "ColumnContainsValue"
+[exclude_conditions.content]
+column = 0
+operation = "contains"
+value = ":"
+
+[[exclude_conditions]]
+type = "ColumnContainsValue"
+[exclude_conditions.content]
+column = 0
+operation = "contains"
+value = "Txn Date"
+
+[[exclude_conditions]]
+type = "ColumnContainsValue"
+[exclude_conditions.content]
+column = 0
+operation = "contains"
+value = "This is a computer generated"
+
 
 [[exclude_conditions]]
 type = "RecordLen"
-content = 7
+content = 8
 
 [[payee_to_second_account.expense]]
 key = "LIC BILL"
