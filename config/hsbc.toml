@@ -1,7 +1,7 @@
 debug = true
 default_first_account = "Assets:Bank:HSBC"
 default_second_account = "Expenses:UnaccountedExpenses"
-csv_has_headers = true
+csv_has_headers = false
 date_format="%d/%m/%Y"
 date_regex='\d{2}/\d{2}/\d{4}'
 first_amount_currency_default='GBP'
@@ -26,6 +26,10 @@ value = "Expenses:Groceries"
 [[payee_to_second_account.expense]]
 key = "AMERICAN EXP"
 value = "Liabilities:CreditCard"
+
+[[payee_to_second_account.expense]]
+key = "FIDELITY.CO.UK TADWORTH VIS"
+value = "Assets:Investments:Fidelity:ISA:Cash"
 
 [[payee_to_second_account.income]]
 key = "FACEBOOK UK"
