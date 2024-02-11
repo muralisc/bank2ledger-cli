@@ -31,11 +31,11 @@ to
 
 ### How to Get CSV file ?
 
-Schwab > History > Export
+Schwab > Accounts > History > Export
 
 ### Command to run
 ```
-cargo run -- \
+RUST_BACKTRACE=1 cargo run -- \
   --config $PATH_TO_BANK2LEDGER_CLI/config/schwab.toml \
   --transactions-csv $PATH_TO_CSV/schwab_Transactions_20230409-103308.csv \
   > $PATH_TO_LEDGER_FILES/ledger/ledger_2023_03Mar_schwab.ledger
@@ -53,7 +53,7 @@ From web portal
 
 ### Command to run
 ```
-cargo run -- \
+RUST_BACKTRACE=1 cargo run -- \
     --config $PATH_TO_BANK2LEDGER_CLI/config/hsbc.toml \
     --transactions-csv $PATH_TO_CSV/hsbc_TrasactionHistory_09_April_2023.csv \
     > $PATH_TO_LEDGER_FILES/ledger/ledger_2023_03Mar_hsbc.ledger
@@ -70,7 +70,7 @@ cargo run -- \
 
 ### Command to run
 ```
-cargo run -- \
+RUST_BACKTRACE=1 cargo run -- \
     --config $PATH_TO_BANK2LEDGER_CLI/config/amex.toml \
     --transactions-csv $PATH_TO_CSV/amex-dec.csv \
     > $PATH_TO_LEDGER_FILES/ledger/ledger_2023_03Mar_amex.ledger
@@ -80,7 +80,7 @@ cargo run -- \
 
 ### Command to run
 ```
-cargo run -- \
+RUST_BACKTRACE=1 cargo run -- \
     --config $PATH_TO_BANK2LEDGER_CLI/config/monzo.toml \
     --transactions-csv $PATH_TO_CSV/Monzo\ Data\ Export\ -\ July.csv \
     > $PATH_TO_LEDGER_FILES/ledger/ledger_2023_03Mar_monzo.ledger
@@ -101,4 +101,11 @@ Export as XlS, no need to convert it as CSV, XLS == TSV
 RUST_BACKTRACE=1 cargo run -- \
     --config ~/src/bank2ledger-cli/config/sbi.toml \
     --transactions-csv ~/shared_folders/transfer_work/sbi-12dec.xls > ledger_2023_12Dec_sbi.txt
-    ```
+```
+
+## Using target build bin
+```
+bank2ledger-cli \
+    --config ~/src/bank2ledger-cli/config/sbi.toml \
+    --transactions-csv ~/shared_folders/transfer_work/sbi-12dec.xls > ledger_2023_12Dec_sbi.txt
+```

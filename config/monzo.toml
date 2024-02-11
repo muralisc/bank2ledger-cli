@@ -45,11 +45,15 @@ key = "Stitch Fix|Kprepublic"
 value = "Expenses:Posessions"
 
 [[payee_to_second_account.expense]]
-key = "Uber$|Postofficetravel|Transport for London|Railcard"
+key = "Uber$|Postofficetravel|Transport for London|Railcard|Vehicle Licensing Agency|Safe Driving For Life"
 value = "Expenses:Transport"
 
 [[payee_to_second_account.expense]]
-key = "Digital Ocean|Hyperoptic|Amazon|Metropolitan Infrastru|Virgin Media|Lebara|Scottish Power|Royal Mail"
+key = "Digital Ocean|Hyperoptic|Amazon|Metropolitan Infrastru|Virgin Media|Lebara|Scottish Power|Royal Mail|Spotify|Better UK"
+value = "Expenses:Utilities"
+
+[[payee_to_second_account.expense]]
+key = "Moogoo EU|JustPark"
 value = "Expenses:Utilities"
 
 [[payee_to_second_account.expense]]

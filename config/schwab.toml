@@ -4,12 +4,13 @@ default_second_account = "Expenses:UnaccountedExpenses"
 csv_has_headers = false
 date_format="%m/%d/%Y"
 date_regex='\d{2}/\d{2}/\d{4}'
+first_amount_currency_default='GBP'
 
 [ledger_record_to_row]
 date = 0                  # Date
 payee = 1                 # Name
 second_account_hint = 3   # Name
-first_amount= 4           # Amount
+first_amount= 5           # Amount
 first_amount_currency= 2  # Currency
 
 [[exclude_conditions]]

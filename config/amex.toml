@@ -61,7 +61,7 @@ value = "Expenses:Entertainment"
 
 
 [[payee_to_second_account.expense]]
-key = "AMAZON|AMZN|PRIMARK|Apple|Justpark|FISH|LEBARA|DOXZOO"
+key = "AMAZON|AMZN|PRIMARK|Apple|Justpark|FISH|LEBARA|DOXZOO|HPI INSTANT INK|EAGERDRINKS"
 value = "Expenses:Utilities"
 
 [[payee_to_second_account.expense]]
