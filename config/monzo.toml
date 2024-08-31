@@ -45,7 +45,7 @@ key = "Stitch Fix|Kprepublic"
 value = "Expenses:Posessions"
 
 [[payee_to_second_account.expense]]
-key = "Uber$|Postofficetravel|Transport for London|Railcard|Vehicle Licensing Agency|Safe Driving For Life"
+key = "Uber$|Postofficetravel|Transport for London|Railcard|Vehicle Licensing Agency|Safe Driving For Life|Travel Up"
 value = "Expenses:Transport"
 
 [[payee_to_second_account.expense]]
@@ -65,7 +65,7 @@ key = "AMERICAN EXP"
 value = "Liabilities:CreditCard"
 
 [[payee_to_second_account.expense]]
-key = "L&Q|Barnet"
+key = "L&Q|Barnet|Locrating"
 value = "Expenses:Housing"
 
 [[payee_to_second_account.expense]]

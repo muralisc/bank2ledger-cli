@@ -36,36 +36,40 @@ key = "MEMBERSHIP FEE|INTEREST CHARGE"
 value = "Expenses:Amex:Interest"
 
 [[payee_to_second_account.expense]]
-key = "TESCO|MARKS (&|AND)|BEST FOODS|SAINSBURY|GRAINMILL|WAITROSE|KERALATASTE"
+key = "TESCO|MARKS (&|AND)|M&S|BEST FOODS|SAINSBURY|GRAINMILL|WAITROSE|KERALATASTE"
 value = "Expenses:Groceries"
 
 [[payee_to_second_account.expense]]
-key = "TFL TRAVEL|TRAVEL UP|Airways|OYSTERCARD"
+key = "IRCTC|VFS Global Services Mumbai|TFL TRAVEL|TRAVEL UP|Airways|OYSTERCARD|UBER|LONDON WATERBUS|TFL GOODWILL"
 value = "Expenses:Transport"
 
 [[payee_to_second_account.expense]]
-key = "BOOTS|BARBER|OURARING"
+key = "BOOTS|BARBER|OURARING|THRIVA"
 value = "Expenses:Health"
 
 [[payee_to_second_account.expense]]
-key = "DELIVEROO|Kew Gardens|HARRODS|LONDON EYE|WESTMINSTER ABBEY|FACEBOOK RATHBONE"
+key = "DELIVEROO|Kew Gardens|HARRODS|LONDON EYE|WESTMINSTER ABBEY|FACEBOOK KINGS|BEER AND BURGER|NETFLIX"
 value = "Expenses:Entertainment"
 
 [[payee_to_second_account.expense]]
-key = "COSTA|IVY CAFE|ODEON|HOPPERS|PRET|Airbnb|THE IVY|MCDONALDS|STARBUCKS|CAFF?E|[CK]OFFEE"
+key = "COSTA|IVY CAFE|ODEON|HOPPERS|PRET|Airbnb|THE IVY|MCDONALDS|STARBUCKS|CAFF?E|[CK]OFFEE|Print Bucket"
 value = "Expenses:Entertainment"
 
 [[payee_to_second_account.expense]]
-key = "LEON|STREET FOOD|CHÂTEAU DE VERSAILLES|WENZELS"
+key = "LEON|STREET FOOD|CHÂTEAU DE VERSAILLES|WENZELS|ROYAL BOTANIC GARDENS|RBG KEW|LONDON DUNGEON|GAIL"
+value = "Expenses:Entertainment"
+
+[[payee_to_second_account.expense]]
+key = "ZARA|HM.COM"
 value = "Expenses:Entertainment"
 
 
 [[payee_to_second_account.expense]]
-key = "AMAZON|AMZN|PRIMARK|Apple|Justpark|FISH|LEBARA|DOXZOO|HPI INSTANT INK|EAGERDRINKS"
+key = "AMAZON|AMZN|PRIMARK|Apple|Justpark|FISH|LEBARA|DOXZOO|HPI INSTANT INK|EAGERDRINKS|Laduree"
 value = "Expenses:Utilities"
 
 [[payee_to_second_account.expense]]
-key = "IKEA|WATERSTONE|MECHBOARDS|PILLOWS"
+key = "IKEA|WATERSTONE|MECHBOARDS|PILLOWS|NEW BALANCE"
 value = "Expenses:Posessions"
 
 [[payee_to_second_account.expense]]

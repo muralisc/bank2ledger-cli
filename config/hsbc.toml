@@ -28,6 +28,10 @@ key = "AMERICAN EXP"
 value = "Liabilities:CreditCard"
 
 [[payee_to_second_account.expense]]
+key = "AMZNMktplace|AMAZON.CO.UK|Amazon Prime"
+value = "Expenses:Utilities"
+
+[[payee_to_second_account.expense]]
 key = "FIDELITY.CO.UK TADWORTH VIS"
 value = "Assets:Investments:Fidelity:ISA:Cash"
 

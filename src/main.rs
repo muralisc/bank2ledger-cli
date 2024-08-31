@@ -43,6 +43,10 @@ fn main() {
     };
     info!("Bank CSV path: {}!", args.transactions_csv);
 
+    // Print editor shebangs !
+    println!("; vim:ft=ledger");
+    println!("; vim:set tw=200");
+
     let bank2ledger = Bank2Ledger::new(settings, args.transactions_csv);
     bank2ledger.print();
 }
