@@ -31,12 +31,20 @@ to
 
 ### How to Get CSV file ?
 
-Schwab > Accounts > History > Export
+Schwab > Accounts > History > Export > Filter Transcation Types {trades, non-trades}
 
 ### Command to run
+Trades:
 ```
 RUST_BACKTRACE=1 cargo run -- \
-  --config $PATH_TO_BANK2LEDGER_CLI/config/schwab.toml \
+  --config $PATH_TO_BANK2LEDGER_CLI/config/schwab-trades.toml \
+  --transactions-csv $PATH_TO_CSV/schwab_Transactions_20230409-103308.csv \
+  > $PATH_TO_LEDGER_FILES/ledger/ledger_2023_03Mar_schwab.ledger
+```
+
+```
+RUST_BACKTRACE=1 cargo run -- \
+  --config $PATH_TO_BANK2LEDGER_CLI/config/schwab-non-trades.toml \
   --transactions-csv $PATH_TO_CSV/schwab_Transactions_20230409-103308.csv \
   > $PATH_TO_LEDGER_FILES/ledger/ledger_2023_03Mar_schwab.ledger
 ```
