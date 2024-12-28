@@ -19,7 +19,7 @@ impl Bank2Ledger {
 
     fn get_date(&self, record: &csv::StringRecord) -> NaiveDate {
         let date_str = &record[self.settings.ledger_record_to_row.date].trim();
-        debug!("Processing date string: \"{}\" of record", date_str);
+        debug!("Processing date string: \"{}\" with regex {}", date_str, self.settings.date_regex);
         let re = RegexBuilder::new(&format!(r"{}", self.settings.date_regex))
             .build()
             .unwrap();
@@ -147,7 +147,9 @@ impl Bank2Ledger {
         // income, in those cases
         // If minus_indicates_expense in csv we need to filp the sign
 
-        let amount_string = record[amount_col].to_string();
+        let amount_string_dirty = record[amount_col].to_string();
+        let amount_string = amount_string_dirty.replace("$", "");
+        // replace $ symbols if any !
         debug!("Checking first amount: {}", amount_string);
         match minus_indicates_expense {
             Some(minus_indicates_expense_value) => {

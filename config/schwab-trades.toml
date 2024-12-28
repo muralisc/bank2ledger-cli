@@ -32,5 +32,9 @@ key = "META PLATFORMS INC CLASS A"
 value = "Income:Facebook:RSU"
 
 [[payee_to_second_account.expense]]
+key = "ISHRS CORE S&P ...500 UCITSUSD ETF"
+value = "Assets:Investments:CharlesSchwab:Cash"
+
+[[payee_to_second_account.expense]]
 key = "FACEBOOK UK LTD"
 value = "Income:Facebook"

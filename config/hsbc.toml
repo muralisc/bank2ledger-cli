@@ -35,6 +35,14 @@ value = "Expenses:Utilities"
 key = "FIDELITY.CO.UK TADWORTH VIS"
 value = "Assets:Investments:Fidelity:ISA:Cash"
 
+[[payee_to_second_account.expense]]
+key = "STRIPE DD|STRIPE FIRST PAYMENT DD"
+value = "Expenses:Housing"
+
+[[payee_to_second_account.expense]]
+key = "HMRC SELF AS"
+value = "Expenses:Taxes"
+
 [[payee_to_second_account.income]]
 key = "FACEBOOK UK"
 value = "Income:Facebook"

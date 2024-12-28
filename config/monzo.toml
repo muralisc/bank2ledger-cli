@@ -49,7 +49,7 @@ key = "Uber$|Postofficetravel|Transport for London|Railcard|Vehicle Licensing Ag
 value = "Expenses:Transport"
 
 [[payee_to_second_account.expense]]
-key = "UK Visas & Immigration|Oyster"
+key = "UK Visas & Immigration|Oyster|AA Driving School|Pramod Khatti"
 value = "Expenses:Transport"
 
 [[payee_to_second_account.expense]]
@@ -57,7 +57,7 @@ key = "Digital Ocean|Hyperoptic|Amazon|Metropolitan Infrastru|Virgin Media|Lebar
 value = "Expenses:Utilities"
 
 [[payee_to_second_account.expense]]
-key = "Moogoo EU|JustPark|Vintage Scisso"
+key = "Moogoo EU|JustPark|Vintage Scisso|Metropolitan"
 value = "Expenses:Utilities"
 
 [[payee_to_second_account.expense]]
@@ -73,7 +73,7 @@ key = "Hoppers|deliveroo|Netflix|ODEON|Burger King|Crown Cafe Bar|Costa Coffee|U
 value = "Expenses:Entertainment"
 
 [[payee_to_second_account.expense]]
-key = "Champ De Mars|Airbnb"
+key = "Champ De Mars|Airbnb|Sonyliv"
 value = "Expenses:Entertainment"
 
 [[payee_to_second_account.expense]]
@@ -85,7 +85,7 @@ key= "Sree Sobha Dharmarajan|Better"
 value =  "Expenses:Allowance"
 
 [[payee_to_second_account.expense]]
-key = "Colindale Local|Kingsbury Fruit"
+key = "Colindale Local|Kingsbury Fruit|Sainsbury"
 value = "Expenses:Groceries"
 
 [[payee_to_second_account.expense]]
