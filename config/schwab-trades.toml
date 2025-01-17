@@ -1,7 +1,7 @@
 debug = true
 default_first_account = "Assets:Investments:CharlesSchwab"
 default_second_account = "Expenses:UnaccountedExpenses"
-csv_has_headers = false
+csv_has_headers = true
 date_format="%m/%d/%Y"
 date_regex='\d{2}/\d{2}/\d{4}'
 first_amount_currency_default='GBP'
@@ -9,7 +9,7 @@ first_amount_currency_default='GBP'
 [ledger_record_to_row]
 date = 0                  # Date
 payee = 1                 # Name
-second_account_hint = 3   # Full name of stock
+second_account_hint = 1   # Full name of stock
 first_amount= 4           # Quantity of Stock
 first_amount_currency= 2  # Ticker of stock
 
@@ -27,14 +27,14 @@ column = 0              # transaction type
 value = "Transactions  for account"
 operation = "contains"
 
-[[payee_to_second_account.income]]
-key = "META PLATFORMS INC CLASS A"
-value = "Income:Facebook:RSU"
-
 [[payee_to_second_account.expense]]
-key = "ISHRS CORE S&P ...500 UCITSUSD ETF"
+key = "Sell"
 value = "Assets:Investments:CharlesSchwab:Cash"
 
-[[payee_to_second_account.expense]]
-key = "FACEBOOK UK LTD"
-value = "Income:Facebook"
+[[payee_to_second_account.income]]
+key = "Stock Plan Activity"
+value = "Income:Facebook:RSU"
+
+[[payee_to_second_account.income]]
+key = "Buy"
+value = "Assets:Investments:CharlesSchwab:Cash"

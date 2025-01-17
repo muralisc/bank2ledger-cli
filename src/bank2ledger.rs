@@ -36,9 +36,11 @@ impl Bank2Ledger {
     }
 
     fn is_record_expense(&self, record: &csv::StringRecord) -> bool {
+        debug!("Checking in record is expense. Checking if there is a debit column");
         match &self.settings.ledger_record_to_row.first_amount_debit {
             Some(first_amount_debit_col) => {
                 let debit_amount_string = record[*first_amount_debit_col].to_string();
+                // If debit column exist and its not null then this record denotes an expense.
                 return !debit_amount_string.trim().is_empty();
             }
             None => {
@@ -112,7 +114,7 @@ impl Bank2Ledger {
     // e.g:
     // 2023-07-29 * "Crown Cafe Bar"
     //  Assets:Bank:Monzo               -13.30 GBP
-    //                                  ^^^^^^^^^^ -------> first account
+    //                                  ^^^^^^^^^^ -------> first amount
     //  Expenses:UnaccountedExpenses
     fn get_first_amount(&self, record: &csv::StringRecord) -> String {
         return match self.settings.ledger_record_to_row.first_amount_debit {
@@ -147,7 +149,7 @@ impl Bank2Ledger {
         // income, in those cases
         // If minus_indicates_expense in csv we need to filp the sign
 
-        let amount_string_dirty = record[amount_col].to_string();
+        let amount_string_dirty = record[amount_col].trim().to_string();
         let amount_string = amount_string_dirty.replace("$", "");
         // replace $ symbols if any !
         debug!("Checking first amount: {}", amount_string);

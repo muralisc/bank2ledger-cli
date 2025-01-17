@@ -1,0 +1,49 @@
+debug = true
+default_first_account = "Assets:Bank:Citi:Savings"
+default_second_account = "Expenses:UnaccountedExpenses"
+csv_has_headers = true
+date_format="%d-%m-%Y"
+date_regex='\d{2}-\d{2}-\d{4}'
+first_amount_currency_default='INR'
+
+[ledger_record_to_row]
+date = 0                  # Date
+payee = 2                 # Name
+# first_account= -1       # Static: Monzo
+second_account_hint = 2   # Name
+first_amount= 4           # Amount
+first_amount_debit = 3
+
+[[exclude_conditions]]
+type = "ColumnContainsValue"
+[exclude_conditions.content]
+column = 0
+operation = "contains"
+value = ":-"
+
+[[exclude_conditions]]
+type = "ColumnContainsValue"
+[exclude_conditions.content]
+column = 0
+operation = "contains"
+value = "Tran Date"
+
+[[exclude_conditions]]
+type = "RecordLen"
+content = 3
+
+[[exclude_conditions]]
+type = "RecordLen"
+content = 2
+
+[[exclude_conditions]]
+type = "RecordLen"
+content = 1
+
+[[payee_to_second_account.expense]]
+key = "test"
+value = "test"
+
+[[payee_to_second_account.income]]
+key = "IMPS INWARD ORG IMPSTO from Mr  MURALI  S STAT E BANK OF INDIA"
+value = "Assets:WireTransfer:SBI_CITI"
