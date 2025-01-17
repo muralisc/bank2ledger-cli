@@ -72,8 +72,28 @@ key = "LIC BILL"
 value = "Assets:LongTerm:LIC"
 
 [[payee_to_second_account.expense]]
-key = "Annual Locker"
+key = "Annual Locker|LOCKER|Amazon I|Airtel"
 value = "Expenses:Utilities"
+
+[[payee_to_second_account.expense]]
+key = "XXXXXXX817CITI"
+value = "Assets:WireTransfer:SBI_CITI"
+
+[[payee_to_second_account.expense]]
+key = "LOCKER"
+value = "Expenses:SBI:Fees"
+
+[[payee_to_second_account.expense]]
+key = "TAX DEDUCTION"
+value = "Expenses:Taxes"
+
+[[payee_to_second_account.expense]]
+key = "CESS DEDUCTION"
+value = "Expenses:Taxes"
+
+[[payee_to_second_account.expense]]
+key = "keralacmdr"
+value = "Expenses:Donations"
 
 [[payee_to_second_account.income]]
 key= "TRANSFER-UPI"

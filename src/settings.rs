@@ -60,7 +60,6 @@ pub struct PayeeSecondAccountMapping {
 
 #[derive(Debug, Deserialize)]
 pub struct Settings {
-    pub debug: bool,
     pub default_first_account: String,
     pub default_second_account: String,
     pub csv_has_headers: bool,
