@@ -92,7 +92,7 @@ key = "CESS DEDUCTION"
 value = "Expenses:Taxes"
 
 [[payee_to_second_account.expense]]
-key = "keralacmdr"
+key = "keralacmdr|DEBIT-ACHDr NACH00000000017880 YES BANK"
 value = "Expenses:Donations"
 
 [[payee_to_second_account.income]]
