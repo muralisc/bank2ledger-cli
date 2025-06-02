@@ -1,5 +1,5 @@
 debug = true
-default_first_account = "Assets:Bank:HSBC"
+default_first_account = "Assets:Bank:HSBC:Savings"
 default_second_account = "Expenses:UnaccountedExpenses"
 csv_has_headers = false
 date_format="%d/%m/%Y"
@@ -16,7 +16,7 @@ first_amount= 2           # Amount
 type = "ColumnContainsValue"
 [exclude_conditions.content]
 column = 1              # transaction type
-value = "TRANSFER FROM HSBC"
+value = "TRANSFER - FROM HSBC"
 operation = "contains"
 
 [[payee_to_second_account.expense]]
@@ -45,4 +45,26 @@ value = "Expenses:Taxes"
 
 [[payee_to_second_account.income]]
 key = "FACEBOOK UK"
-value = "Income:Facebook"
+value = "Income:Facebook:Salary"
+
+[[payee_to_second_account.income]]
+# transfers FROM Monzo
+key = "M Sureshchandran CR|M Sureshchandran Murali Sureshchand CR"
+value = "Assets:WireTransfer:MONZO_HSBC"
+
+[[payee_to_second_account.expense]]
+# transfers TO Monzo
+key = "MURALI SURESH TRANSFER FROM HSBC SO"
+value = "Assets:WireTransfer:MONZO_HSBC"
+
+[[payee_to_second_account.expense]]
+key = "DEPOSIT BOND "
+value = "Assets:Bank:HSBC:Fixed"
+
+[[payee_to_second_account.expense]]
+key = "Remitly UK|M Sureshchandran pis"
+value = "Assets:WireTransfer:REMITLY_HSBC"
+
+[[payee_to_second_account.income]]
+key = "Remitly U.K."
+value = "Assets:WireTransfer:REMITLY_HSBC"

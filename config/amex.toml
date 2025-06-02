@@ -36,11 +36,15 @@ key = "MEMBERSHIP FEE|INTEREST CHARGE"
 value = "Expenses:Amex:Interest"
 
 [[payee_to_second_account.expense]]
-key = "NISA LOCAL|TESCO|MARKS (&|AND)|M&S|BEST FOODS|SAINSBURY|GRAINMILL|WAITROSE|KERALATASTE|ATHLETIC GREENS|THE HAMPSTEAD BUTCHER"
+key = "NISA LOCAL|OCADO|TESCO|MARKS (&|AND)|M&S|BEST FOODS|SAINSBURY|GRAINMILL|WAITROSE|KERALATASTE|ATHLETIC GREENS|THE HAMPSTEAD BUTCHER"
 value = "Expenses:Groceries"
 
 [[payee_to_second_account.expense]]
-key = "IRCTC|VFS Global Services Mumbai|TFL TRAVEL|TRAVEL UP|Airways|OYSTERCARD|UBER|LONDON WATERBUS|TFL GOODWILL"
+key = "NAYAXAU|SP LAKSHMI STORES UK|CO-OP"
+value = "Expenses:Groceries"
+
+[[payee_to_second_account.expense]]
+key = "IRCTC|BOOKING.COM|VFS Global Services Mumbai|TFL TRAVEL|TRAVEL UP|Airways|OYSTERCARD|UBER|LONDON WATERBUS|TFL GOODWILL"
 value = "Expenses:Transport"
 
 [[payee_to_second_account.expense]]
@@ -60,20 +64,31 @@ key = "TUTTONS|LDN TRANSPORT MUSEUM|LEON|STREET FOOD|CHÂTEAU DE VERSAILLES|WENZ
 value = "Expenses:Entertainment"
 
 [[payee_to_second_account.expense]]
-key = "ZARA|HM.COM|BABEL BEERHOUSE"
+key = "ZARA|HM.COM|BABEL BEERHOUSE|HOTSTAR UK|REDEMPTION ROASTERS|FRAGRANCE SAMPLES UK|SP LOLAS CUPCAKES|VUE ENTERTAINMENT LTD"
 value = "Expenses:Entertainment"
 
+[[payee_to_second_account.expense]]
+key = "VUE ENTERTAINMENT LTD|TASTE THE BEST|CHARLOTTE TILBURY BTY|HOTEL CHOCOLAT"
+value = "Expenses:Entertainment"
 
 [[payee_to_second_account.expense]]
-key = "WWW.LOCRATING.COM|NORD|GENTLE HAIR DYE|AMAZON|AMZN|PRIMARK|Apple|Justpark|FISH|LEBARA|DOXZOO|HPI INSTANT INK|EAGERDRINKS|Laduree"
+key = "WIKIPEDIA GIFT"
+value = "Expenses:Donations"
+
+[[payee_to_second_account.expense]]
+key = "WWW.LOCRATING.COM|WH SMITH RETAIL|NORD|GENTLE HAIR DYE|AMAZON|AMZN|PRIMARK|Apple|Justpark|FISH|LEBARA|DOXZOO|HPI INSTANT INK|EAGERDRINKS|Laduree"
 value = "Expenses:Utilities"
 
 [[payee_to_second_account.expense]]
-key = "SHEIN DISTRIBUTION|IKEA|WATERSTONE|MECHBOARDS|PILLOWS|NEW BALANCE|BELLROY|RYOHIN KEIKAKU"
+key = "SHEIN DISTRIBUTION|IKEA|WATERSTONE|MECHBOARDS|PILLOWS|NEW BALANCE|BELLROY|RYOHIN KEIKAKU|UNIQLO EUROPE"
 value = "Expenses:Posessions"
 
 [[payee_to_second_account.expense]]
-key = "NEXT NEXTDIRECTORY|J BARBOUR AND SONS|SP GLOVERALL            EARLS BARTON"
+key = "NEXT NEXTDIRECTORY|J BARBOUR AND SONS|SP GLOVERALL            EARLS BARTON|CHARLES TYRWHITT SHIRTS|BRAVISSIMO LTD|SP ALLBIRDS"
+value = "Expenses:Posessions"
+
+[[payee_to_second_account.expense]]
+key = "JOJO  NEXT TP|HOBBS LIMITED|ADIDAS|CINEWORLD"
 value = "Expenses:Posessions"
 
 [[payee_to_second_account.expense]]

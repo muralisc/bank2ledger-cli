@@ -92,6 +92,11 @@ key = "CESS DEDUCTION"
 value = "Expenses:Taxes"
 
 [[payee_to_second_account.expense]]
+key = "PRACTO"
+value = "Expenses:Health"
+
+
+[[payee_to_second_account.expense]]
 key = "keralacmdr|DEBIT-ACHDr NACH00000000017880 YES BANK"
 value = "Expenses:Donations"
 
@@ -111,3 +116,6 @@ value =  "Income:Unaccounted"
 key= "CREDIT INTEREST"
 value =  "Income:SBI:Interest"
 
+[[payee_to_second_account.income]]
+key= "RMLY01"
+value =  "Assets:WireTransfer:SBI_HSBC"

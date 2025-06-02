@@ -95,12 +95,12 @@ value = "Liabilities:CreditCard"
 [[payee_to_second_account.expense]]
 # for HSBC
 key= "Murali Sureshchandran"
-value= "Assets:Bank:OnWire"
+value= "Assets:WireTransfer:MONZO_HSBC"
 
 [[payee_to_second_account.expense]]
 # for Fidelity
 key= "Fidelity"
-value= "Assets:Bank:OnWire"
+value= "Assets:WireTransfer:MONZO_FIDELITY"
 
 [[payee_to_second_account.income]]
 key= "Sree Sobha Dharmarajan"
@@ -108,4 +108,4 @@ value =  "Income:LivingShare"
 
 [[payee_to_second_account.income]]
 key= "SURESHCHANDR"
-value= "Assets:Bank:HSBC"
+value= "Assets:WireTransfer:MONZO_HSBC"
