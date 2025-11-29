@@ -64,6 +64,17 @@ impl Bank2Ledger {
         }
     }
 
+    fn get_comment(&self, record: &csv::StringRecord) -> Option<String> {
+        let mut comment_str : String = Default::default();
+        if let Some(comment_idxes) = &self.settings.ledger_record_to_row.comment {
+            for idx in comment_idxes.iter() {
+                comment_str.push_str(&record[*idx])
+            }
+            return Some(comment_str);
+        }
+        return None;
+    }
+
     fn get_second_account(&self, record: &csv::StringRecord) -> String {
         let second_account_hint = &record[self.settings.ledger_record_to_row.second_account_hint];
         debug!(
@@ -246,6 +257,7 @@ impl Bank2Ledger {
                 self.get_first_amount(&record),
                 self.get_first_amount_currency(&record),
                 self.get_second_account(&record),
+                self.get_comment(&record),
             );
             lr.print();
         }

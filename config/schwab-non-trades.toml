@@ -12,6 +12,7 @@ payee = 1                 # Name
 second_account_hint = 1   # type of transactino
 first_amount= 7           # Amount
 # first_amount_currency= 2  # Currency
+comment = [3]
 
 [[exclude_conditions]]
 type = "ColumnContainsValue"

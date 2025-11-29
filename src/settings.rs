@@ -4,13 +4,6 @@ use std::collections::HashMap;
 
 // Configs used to map a csv to ledger records
 
-#[derive(Debug, Deserialize)]
-pub struct Meta {
-    pub description: usize,
-    pub address: Option<usize>,
-    pub transaction_type: usize,
-}
-
 // More like csv row to ledger record
 // Setting to map a csv row to ledger record
 #[derive(Debug, Deserialize)]
@@ -22,7 +15,6 @@ pub struct LedgerRecordToRow {
     // CSV column used to find the first account
     // Usually this is not set and is taken from
     // default_first_account setting in global option
-    pub first_account: Option<usize>,
     pub second_account_hint: usize,
     // CSV column containing the first amount
     // (if credit and debit are in multiple columns,
@@ -32,7 +24,7 @@ pub struct LedgerRecordToRow {
     pub first_amount_debit: Option<usize>,
     // CSV column containing the first amount currency
     pub first_amount_currency: Option<usize>,
-    pub meta: Option<Meta>,
+    pub comment: Option<Vec<usize>>,
 }
 
 #[derive(Debug, Deserialize)]
