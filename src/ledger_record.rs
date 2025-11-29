@@ -7,6 +7,7 @@ pub struct LedgerRecord {
     first_amount: String,
     first_amount_currency: String,
     second_account: String,
+    comment: Option<String>,
 }
 
 impl LedgerRecord {
@@ -17,6 +18,7 @@ impl LedgerRecord {
         first_amount: String,
         first_amount_currency: String,
         second_account: String,
+        comment: Option<String>,
     ) -> Self {
         LedgerRecord {
             date: date,
@@ -25,11 +27,15 @@ impl LedgerRecord {
             first_amount: first_amount,
             first_amount_currency: first_amount_currency,
             second_account: second_account,
+            comment: comment,
         }
     }
     pub fn print(&self) {
         let tab_as_spaces = "        ";
         println!("{} * \"{}\"", self.date, self.payee);
+        if let Some(comment) = &self.comment {
+            println!("{}; {}", tab_as_spaces, comment);
+        }
         println!(
             "{}{}{}{} {}",
             tab_as_spaces,
