@@ -13,6 +13,7 @@ second_account_hint = 1   # Full name of stock
 first_amount= 4           # Quantity of Stock
 first_amount_currency= 2  # Ticker of stock
 comment = [1,2,3]
+first_account_hint = 2
 
 [[exclude_conditions]]
 type = "ColumnContainsValue"
@@ -39,3 +40,15 @@ value = "Income:Facebook:RSU"
 [[second_account_hint_mapping.income]]
 key = "Buy"
 value = "Assets:Investments:CharlesSchwab:Cash"
+
+[[first_account_hint_mapping]]
+key = "META"
+value = "Assets:Investments:CharlesSchwab:Meta"
+
+[[first_account_hint_mapping]]
+key = "GOOG"
+value = "Assets:Investments:CharlesSchwab:GOOG"
+
+[[first_account_hint_mapping]]
+key = "CSTNL"
+value = "Assets:Investments:CharlesSchwab:CSTNL"

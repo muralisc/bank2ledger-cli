@@ -12,9 +12,6 @@ pub struct LedgerRecordToRow {
     pub date: usize,
     // CSV column containing the payee
     pub payee: usize,
-    // CSV column used to find the first account
-    // Usually this is not set and is taken from
-    // default_first_account setting in global option
     pub second_account_hint: usize,
     // CSV column containing the first amount
     // (if credit and debit are in multiple columns,
@@ -25,6 +22,10 @@ pub struct LedgerRecordToRow {
     // CSV column containing the first amount currency
     pub first_amount_currency: Option<usize>,
     pub comment: Option<Vec<usize>>,
+    // CSV column used to find the first account
+    // Usually this is not set and is taken from
+    // default_first_account setting in global option
+    pub first_account_hint: Option<usize>
 }
 
 #[derive(Debug, Deserialize)]
@@ -45,7 +46,7 @@ pub struct Mapping {
 }
 
 #[derive(Debug, Deserialize)]
-pub struct PayeeSecondAccountMapping {
+pub struct SecondAccountHintMapping {
     pub expense: Vec<Mapping>,
     pub income: Vec<Mapping>,
 }
@@ -60,9 +61,10 @@ pub struct Settings {
     pub first_amount_currency_default: String,
     pub ledger_record_to_row: LedgerRecordToRow,
     pub exclude_conditions: Vec<ExcludeCondition>,
-    pub second_account_hint_mapping: PayeeSecondAccountMapping,
+    pub second_account_hint_mapping: SecondAccountHintMapping,
     pub minus_indicates_expense: Option<bool>,
     pub delimiter: Option<String>,
+    pub first_account_hint_mapping: Option<Vec<Mapping>>,
 }
 
 impl Settings {

@@ -76,6 +76,33 @@ impl Bank2Ledger {
         return None;
     }
 
+    fn get_first_account(&self, record: &csv::StringRecord) -> String {
+        if let Some(first_account_hint_idx) = self.settings.ledger_record_to_row.first_account_hint {
+            let first_account_hint = &record[first_account_hint_idx];
+            if let Some(first_account_hint_mapping) = &self.settings.first_account_hint_mapping {
+                for item in first_account_hint_mapping {
+                    let re = RegexBuilder::new(&format!(r"{}", item.key))
+                        .case_insensitive(true)
+                        .build()
+                        .unwrap();
+                    match re.find(first_account_hint) {
+                        Some(mat) => {
+                            debug!("Match for first account {:?}", mat);
+                            return item.value.to_string();
+                        }
+                        None => debug!(
+                            "First account mapped to None for hint {:?} for regex {:?}",
+                            first_account_hint, item.key
+                        ),
+                    }
+                }
+            } else {
+                panic!("first_account_hint provided without first_account_hint_mapping: {:?}", first_account_hint)
+            }
+        }
+        return self.settings.default_first_account.to_string();
+    }
+
     fn get_second_account(&self, record: &csv::StringRecord) -> String {
         let second_account_hint = &record[self.settings.ledger_record_to_row.second_account_hint];
         debug!(
@@ -254,7 +281,7 @@ impl Bank2Ledger {
             let lr = LedgerRecord::new(
                 self.get_date(&record),
                 self.get_payee(&record),
-                self.settings.default_first_account.to_string(),
+                self.get_first_account(&record),
                 self.get_first_amount(&record),
                 self.get_first_amount_currency(&record),
                 self.get_second_account(&record),
