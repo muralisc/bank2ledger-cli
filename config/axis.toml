@@ -40,18 +40,18 @@ content = 2
 type = "RecordLen"
 content = 1
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "INSURANCE <30000013400423024> - TATA AIA - PREMIUM"
 value = "Assets:Investments:TataSmartPlusInsurance"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "INSURANCE <30000033130422758> - TATA AIA - PREMIUM"
 value = "Assets:Investments:TataSampoornaRakshaInsurance"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key = "IMPS INWARD ORG IMPSTO from Mr  MURALI  S STAT E BANK OF INDIA"
 value = "Assets:WireTransfer:SBI_CITI"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "INTEREST EARNED|SB:5153341817:Int"
 value = "Income:Citi:Interest"

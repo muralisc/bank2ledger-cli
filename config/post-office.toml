@@ -25,10 +25,10 @@ column = 0              # transaction type
 value = "Date"
 operation = "contains"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "LADUREE"
 value = "Expenses:Groceries"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key = "Card Load"
 value = "Assets:Bank:Monzo"

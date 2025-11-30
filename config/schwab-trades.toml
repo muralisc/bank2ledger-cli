@@ -1,5 +1,5 @@
 debug = true
-default_first_account = "Assets:Investments:CharlesSchwab"
+default_first_account = "Assets:Investments:CharlesSchwab:Meta"
 default_second_account = "Expenses:UnaccountedExpenses"
 csv_has_headers = true
 date_format="%m/%d/%Y"
@@ -12,6 +12,7 @@ payee = 1                 # Name
 second_account_hint = 1   # Full name of stock
 first_amount= 4           # Quantity of Stock
 first_amount_currency= 2  # Ticker of stock
+comment = [1,2,3]
 
 [[exclude_conditions]]
 type = "ColumnContainsValue"
@@ -27,14 +28,14 @@ column = 0              # transaction type
 value = "Transactions  for account"
 operation = "contains"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "Sell"
 value = "Assets:Investments:CharlesSchwab:Cash"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key = "Stock Plan Activity"
 value = "Income:Facebook:RSU"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key = "Buy"
 value = "Assets:Investments:CharlesSchwab:Cash"

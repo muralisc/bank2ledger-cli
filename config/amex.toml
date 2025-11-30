@@ -27,75 +27,75 @@ column = 0              # transaction type
 value = "Date"
 operation = "contains"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "LEETCODE"
 value = "Expenses:Career"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "MEMBERSHIP FEE|INTEREST CHARGE"
 value = "Expenses:Amex:Interest"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "NISA LOCAL|OCADO|TESCO|MARKS (&|AND)|M&S|BEST FOODS|SAINSBURY|GRAINMILL|WAITROSE|KERALATASTE|ATHLETIC GREENS|THE HAMPSTEAD BUTCHER"
 value = "Expenses:Groceries"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "NAYAXAU|SP LAKSHMI STORES UK|CO-OP"
 value = "Expenses:Groceries"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "IRCTC|BOOKING.COM|VFS Global Services Mumbai|TFL TRAVEL|TRAVEL UP|Airways|OYSTERCARD|UBER|LONDON WATERBUS|TFL GOODWILL"
 value = "Expenses:Transport"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "BOOTS|BARBER|OURARING|THRIVA|VINTAGE SCISSORS|ROYAL FREE HOSPITAL"
 value = "Expenses:Health"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "PEPE PIRI PIRI|DELIVEROO|Kew Gardens|HARRODS|LONDON EYE|WESTMINSTER ABBEY|FACEBOOK KINGS|BEER AND BURGER|NETFLIX"
 value = "Expenses:Entertainment"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "FACEBOOK RATHBONE|COSTA|IVY CAFE|ODEON|HOPPERS|PRET|Airbnb|THE IVY|MCDONALDS|STARBUCKS|CAFF?E|[CK]OFFEE|Print Bucket"
 value = "Expenses:Entertainment"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "TUTTONS|LDN TRANSPORT MUSEUM|LEON|STREET FOOD|CHÂTEAU DE VERSAILLES|WENZELS|ROYAL BOTANIC GARDENS|RBG KEW|LONDON DUNGEON|GAIL"
 value = "Expenses:Entertainment"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "ZARA|HM.COM|BABEL BEERHOUSE|HOTSTAR UK|REDEMPTION ROASTERS|FRAGRANCE SAMPLES UK|SP LOLAS CUPCAKES|VUE ENTERTAINMENT LTD"
 value = "Expenses:Entertainment"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "VUE ENTERTAINMENT LTD|TASTE THE BEST|CHARLOTTE TILBURY BTY|HOTEL CHOCOLAT"
 value = "Expenses:Entertainment"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "WIKIPEDIA GIFT"
 value = "Expenses:Donations"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "WWW.LOCRATING.COM|WH SMITH RETAIL|NORD|GENTLE HAIR DYE|AMAZON|AMZN|PRIMARK|Apple|Justpark|FISH|LEBARA|DOXZOO|HPI INSTANT INK|EAGERDRINKS|Laduree"
 value = "Expenses:Utilities"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "SHEIN DISTRIBUTION|IKEA|WATERSTONE|MECHBOARDS|PILLOWS|NEW BALANCE|BELLROY|RYOHIN KEIKAKU|UNIQLO EUROPE"
 value = "Expenses:Posessions"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "NEXT NEXTDIRECTORY|J BARBOUR AND SONS|SP GLOVERALL            EARLS BARTON|CHARLES TYRWHITT SHIRTS|BRAVISSIMO LTD|SP ALLBIRDS"
 value = "Expenses:Posessions"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "JOJO  NEXT TP|HOBBS LIMITED|ADIDAS|CINEWORLD"
 value = "Expenses:Posessions"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key= "POST OFFICE"
 value= "Assets:Bank:PostOfficeTravelMoneyCard"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key = "PAYMENT RECEIVED"
 value = "Liabilities:CreditCard"
 

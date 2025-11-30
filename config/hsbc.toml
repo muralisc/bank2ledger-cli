@@ -19,52 +19,52 @@ column = 1              # transaction type
 value = "TRANSFER - FROM HSBC"
 operation = "contains"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "TESCO"
 value = "Expenses:Groceries"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "AMERICAN EXP"
 value = "Liabilities:CreditCard"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "AMZNMktplace|AMAZON.CO.UK|Amazon Prime"
 value = "Expenses:Utilities"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "FIDELITY.CO.UK TADWORTH VIS"
 value = "Assets:Investments:Fidelity:ISA:Cash"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "STRIPE DD|STRIPE FIRST PAYMENT DD"
 value = "Expenses:Housing"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "HMRC SELF AS"
 value = "Expenses:Taxes"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key = "FACEBOOK UK"
 value = "Income:Facebook:Salary"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 # transfers FROM Monzo
 key = "M Sureshchandran CR|M Sureshchandran Murali Sureshchand CR"
 value = "Assets:WireTransfer:MONZO_HSBC"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 # transfers TO Monzo
 key = "MURALI SURESH TRANSFER FROM HSBC SO"
 value = "Assets:WireTransfer:MONZO_HSBC"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "DEPOSIT BOND "
 value = "Assets:Bank:HSBC:Fixed"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "Remitly UK|M Sureshchandran pis"
 value = "Assets:WireTransfer:REMITLY_HSBC"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key = "Remitly U.K."
 value = "Assets:WireTransfer:REMITLY_HSBC"

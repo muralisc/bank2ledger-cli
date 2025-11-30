@@ -67,55 +67,55 @@ value = "This is a computer generated"
 type = "RecordLen"
 content = 8
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "LIC BILL"
 value = "Assets:LongTerm:LIC"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "Annual Locker|LOCKER|Amazon I|Airtel"
 value = "Expenses:Utilities"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "XXXXXXX817CITI"
 value = "Assets:WireTransfer:SBI_CITI"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "LOCKER"
 value = "Expenses:SBI:Fees"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "TAX DEDUCTION"
 value = "Expenses:Taxes"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "CESS DEDUCTION"
 value = "Expenses:Taxes"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "PRACTO"
 value = "Expenses:Health"
 
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "keralacmdr|DEBIT-ACHDr NACH00000000017880 YES BANK"
 value = "Expenses:Donations"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key= "TRANSFER-UPI"
 value =  "Income:Unaccounted"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key= "BULK POSTING"
 value =  "Income:Zerodha:Divident"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key= "TRANSFER-UPI|TRANSFER-NEFT"
 value =  "Income:Unaccounted"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key= "CREDIT INTEREST"
 value =  "Income:SBI:Interest"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key= "RMLY01"
 value =  "Assets:WireTransfer:SBI_HSBC"

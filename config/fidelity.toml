@@ -23,10 +23,10 @@ column = 3              # transaction type
 value = "Cash Out"
 operation = "contains"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = ""
 value = ""
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key= "Cash In"
 value= "Assets:Bank:HSBC"

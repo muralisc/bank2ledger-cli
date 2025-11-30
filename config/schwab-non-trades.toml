@@ -28,18 +28,18 @@ column = 0              # transaction type
 value = "Transactions  for account"
 operation = "contains"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key = "META PLATFORMS INC CLASS A"
 value = "Income:Facebook:RSU"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key = "Credit Interest"
 value = "Income:Schwab:Interest"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key = "Dividend"
 value = "Income:Schwab:Interest"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "Tax"
 value = "Expenses:Schwab:Tax"

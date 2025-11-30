@@ -40,72 +40,72 @@ column = 7
 value = "0.00"
 operation = "equal"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "Stitch Fix|Kprepublic"
 value = "Expenses:Posessions"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "Uber$|Postofficetravel|Transport for London|Railcard|Vehicle Licensing Agency|Safe Driving For Life|Travel Up"
 value = "Expenses:Transport"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "UK Visas & Immigration|Oyster|AA Driving School|Pramod Khatti"
 value = "Expenses:Transport"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "Digital Ocean|Hyperoptic|Amazon|Metropolitan Infrastru|Virgin Media|Lebara|Scottish Power|Royal Mail|Spotify|Better UK"
 value = "Expenses:Utilities"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "Moogoo EU|JustPark|Vintage Scisso|Metropolitan|Manorama Products"
 value = "Expenses:Utilities"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "AMERICAN EXP"
 value = "Liabilities:CreditCard"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "L&Q|Barnet|Locrating"
 value = "Expenses:Housing"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "Hoppers|deliveroo|Netflix|ODEON|Burger King|Crown Cafe Bar|Costa Coffee|Uber Eats|Thrillophilia|OnlyFans"
 value = "Expenses:Entertainment"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "Champ De Mars|Airbnb|Sonyliv"
 value = "Expenses:Entertainment"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "Optometrist|Christian Art|Royal Free London|H.a. Mcparland Ltd"
 value = "Expenses:Health"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key= "Sree Sobha Dharmarajan|Better"
 value =  "Expenses:Allowance"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "Colindale Local|Kingsbury Fruit|Sainsbury|Sp Lakshmi Stores"
 value = "Expenses:Groceries"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 key = "AMERICAN EXP"
 value = "Liabilities:CreditCard"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 # for HSBC
 key= "Murali Sureshchandran"
 value= "Assets:WireTransfer:MONZO_HSBC"
 
-[[payee_to_second_account.expense]]
+[[second_account_hint_mapping.expense]]
 # for Fidelity
 key= "Fidelity"
 value= "Assets:WireTransfer:MONZO_FIDELITY"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key= "Sree Sobha Dharmarajan"
 value =  "Income:LivingShare"
 
-[[payee_to_second_account.income]]
+[[second_account_hint_mapping.income]]
 key= "SURESHCHANDR"
 value= "Assets:WireTransfer:MONZO_HSBC"

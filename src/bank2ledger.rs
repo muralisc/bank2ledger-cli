@@ -68,7 +68,8 @@ impl Bank2Ledger {
         let mut comment_str : String = Default::default();
         if let Some(comment_idxes) = &self.settings.ledger_record_to_row.comment {
             for idx in comment_idxes.iter() {
-                comment_str.push_str(&record[*idx])
+                comment_str.push_str(&record[*idx]);
+                comment_str.push_str(" | ");
             }
             return Some(comment_str);
         }
@@ -83,11 +84,11 @@ impl Bank2Ledger {
         );
         let amount = &record[self.settings.ledger_record_to_row.first_amount];
 
-        let mut mapping: Vec<Mapping> = self.settings.payee_to_second_account.expense.clone();
+        let mut mapping: Vec<Mapping> = self.settings.second_account_hint_mapping.expense.clone();
         if !self.is_record_expense(record) {
             // If the amount is an income it could be a refund.
             // So lets concat both the income and expense maps.
-            let income_mapping = self.settings.payee_to_second_account.income.clone();
+            let income_mapping = self.settings.second_account_hint_mapping.income.clone();
             mapping.extend(income_mapping);
             debug!("Income Mapping {:?}", mapping);
         }

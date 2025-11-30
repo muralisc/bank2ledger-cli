@@ -60,7 +60,7 @@ pub struct Settings {
     pub first_amount_currency_default: String,
     pub ledger_record_to_row: LedgerRecordToRow,
     pub exclude_conditions: Vec<ExcludeCondition>,
-    pub payee_to_second_account: PayeeSecondAccountMapping,
+    pub second_account_hint_mapping: PayeeSecondAccountMapping,
     pub minus_indicates_expense: Option<bool>,
     pub delimiter: Option<String>,
 }
