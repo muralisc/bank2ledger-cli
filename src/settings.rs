@@ -12,7 +12,7 @@ pub struct LedgerRecordToRow {
     pub date: usize,
     // CSV column containing the payee
     pub payee: usize,
-    pub second_account_hint: usize,
+    pub second_account_hint: Vec<usize>,
     // CSV column containing the first amount
     // (if credit and debit are in multiple columns,
     // this has credit column)

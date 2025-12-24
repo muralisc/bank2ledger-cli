@@ -78,6 +78,10 @@ impl Bank2Ledger {
 
     fn get_first_account(&self, record: &csv::StringRecord) -> String {
         if let Some(first_account_hint_idx) = self.settings.ledger_record_to_row.first_account_hint {
+            debug!(
+                "Getting first account with hint: {:?}",
+                first_account_hint_idx
+            );
             let first_account_hint = &record[first_account_hint_idx];
             if let Some(first_account_hint_mapping) = &self.settings.first_account_hint_mapping {
                 for item in first_account_hint_mapping {
@@ -100,11 +104,20 @@ impl Bank2Ledger {
                 panic!("first_account_hint provided without first_account_hint_mapping: {:?}", first_account_hint)
             }
         }
+        debug!(
+            "Returning default First Account",
+        );
         return self.settings.default_first_account.to_string();
     }
-
     fn get_second_account(&self, record: &csv::StringRecord) -> String {
-        let second_account_hint = &record[self.settings.ledger_record_to_row.second_account_hint];
+        let second_account_hint: String = self
+            .settings
+            .ledger_record_to_row
+            .second_account_hint
+            .iter()
+            .map(|i| record[*i].to_string())
+            .collect::<Vec<String>>()
+            .join(" ");
         debug!(
             "Getting second account with hint: {:?}",
             second_account_hint
@@ -125,7 +138,7 @@ impl Bank2Ledger {
                 .case_insensitive(true)
                 .build()
                 .unwrap();
-            match re.find(second_account_hint) {
+            match re.find(&second_account_hint) {
                 Some(mat) => {
                     debug!("Match for second account {:?}", mat);
                     return item.value.to_string();
@@ -242,15 +255,19 @@ impl Bank2Ledger {
                     }
                 }
                 ExcludeCondition::RecordLen(record_len) => {
-                    debug!(
-                        "Excluding condition: {:?}, record len : {}",
-                        record_len,
-                        record.len()
-                    );
                     if *record_len == record.len() {
                         should_exclude = true
                     }
+                    debug!(
+                        "Excluding condition: {:?}, record len : {}, should_exclude: {}",
+                        record_len,
+                        record.len(),
+                        should_exclude
+                    );
                 }
+            }
+            if should_exclude == true  {
+                break;
             }
         }
         return should_exclude;

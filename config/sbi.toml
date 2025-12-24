@@ -10,8 +10,7 @@ delimiter = "tab"
 [ledger_record_to_row]
 date = 0                  # Date
 payee = 2                 # Name
-# first_account= -1       # Static: Monzo
-second_account_hint = 2   # Name
+second_account_hint = [2]   # Name
 first_amount= 5           # Amount
 first_amount_debit = 4
 

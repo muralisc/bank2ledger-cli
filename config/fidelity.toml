@@ -4,17 +4,22 @@ default_second_account = "Equity:OpeningBalences"
 csv_has_headers = true
 date_format="%d %b %Y"
 date_regex='\d{2} [A-Z][a-z]{2} \d{4}'
+first_amount_currency_default='GBP'
 
 [ledger_record_to_row]
 date = 0                  # Date
 payee = 2                 # Name
-# first_account= -1       # Static: Fidelity
-second_account_hint = 4   # Name
+first_account_hint = 4    # Product Wrapper
+second_account_hint = [2,3,4] # Transaction type,Investments,Product Wrapper
 first_amount= 7           # Amount
 
 [ledger_record_to_row.meta]
 description = 7          # Description
 transaction_type = 5      # type
+
+[[exclude_conditions]]
+type = "RecordLen"
+content = 2
 
 [[exclude_conditions]]
 type = "ColumnContainsValue"
@@ -23,10 +28,33 @@ column = 3              # transaction type
 value = "Cash Out"
 operation = "contains"
 
+[[exclude_conditions]]
+type = "ColumnContainsValue"
+[exclude_conditions.content]
+column = 0              # Order date
+value = "Order date"
+operation = "contains"
+
 [[second_account_hint_mapping.expense]]
-key = ""
-value = ""
+key = "Tax On Interest"
+value = "Expenses:Fidelity:TaxOnInterest"
 
 [[second_account_hint_mapping.income]]
-key= "Cash In"
+key = "Cash Interest,.*,Investment ISA"
+value = "Assets:Investments:Fidelity:ISA:Cash"
+
+[[second_account_hint_mapping.income]]
+key= "Cash In,"
 value= "Assets:Bank:HSBC"
+
+[[first_account_hint_mapping]]
+key = "Investment Account"
+value = "Assets:Investments:Fidelity:InvestmentAccount:Cash"
+
+[[first_account_hint_mapping]]
+key = "Cash Interest.*Investment Account"
+value = "Income:Fidelity:InvestmentAccount:Cash:Interest"
+
+[[first_account_hint_mapping]]
+key = "Cash Interest.*Investment ISA"
+value = "Income:Fidelity:ISA:Cash:Interest"
