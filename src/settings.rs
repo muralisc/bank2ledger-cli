@@ -25,7 +25,7 @@ pub struct LedgerRecordToRow {
     // CSV column used to find the first account
     // Usually this is not set and is taken from
     // default_first_account setting in global option
-    pub first_account_hint: Option<usize>
+    pub first_account_hint: Option<Vec<usize>>
 }
 
 #[derive(Debug, Deserialize)]

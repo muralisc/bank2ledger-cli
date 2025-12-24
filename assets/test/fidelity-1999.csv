@@ -1,0 +1,32 @@
+﻿Account ,All Accounts
+Timeframe,04/06/2002-04/12/1999
+Transaction type,All Transactions
+Investment name,All Investments
+Valuations,"£135,771.60"
+
+Order date,Completion date,Transaction type,Investments,Product Wrapper,Account Number,Source investment,Amount,Quantity,Price per unit,Reference Number,Status,
+06 Jan 1999,06 Jan 1999,Cash In Ring-fenced For Fees,"Cash",Cash Management Account,AWSxxxxxxx1,,14.22,14.22,1,1234567890,Completed,
+06 Jan 1999,06 Jan 1999,Transfer To Cash Management Account For Fees,"Cash",Investment ISA,ASxxxxxxxx,,-14.22,14.22,1,1234567890,Completed,
+06 Jan 1999,09 Jan 1999,Service Fee,"Cash",Cash Management Account,AWSxxxxxxx1,,-14.22,14.22,1,1234567890,Completed,
+
+
+
+26 Sep 1998,25 Sep 1998,Cash Dividend,"Cash",Investment ISA,ASxxxxxxxx,"VANGUARD FUNDS PLC, S&P 500 UCITS ETF USD DIS (VUSA)",75.50,75.5,1,1234567890,Completed,
+
+25 Sep 1998,25 Sep 1998,Dealing Fee,"Cash",Investment ISA,ASxxxxxxxx,,-7.50,0,0,912345678,Completed,
+25 Sep 1998,27 Sep 1998,Cash Out For Buy,"Cash",Investment ISA,ASxxxxxxxx,,-9950.34,9950.34,1,912345678,Completed,
+25 Sep 1998,27 Sep 1998,Buy,"VANGUARD FUNDS PLC, S&P 500 UCITS ETF USD DIS (VUSA)",Investment ISA,ASxxxxxxxx,,9957.84,123,80.9,912345678,Completed,
+
+25 Sep 1998,27 Sep 1998,Cash Out For Buy,"Cash",Investment ISA,ASxxxxxxxx,,-10000.00,10000,1,912345678,Completed,
+25 Sep 1998,27 Sep 1998,Buy,"Vanguard FTSE 100 Index Unit Trust GBP Acc",Investment ISA,ASxxxxxxxx,,10000.00,61.28,163.18,912345678,Completed,
+
+24 Sep 1998,27 Sep 1998,Cash In Lump Sum,"Cash",Investment ISA,ASxxxxxxxx,,15000.00,15000,1,912345678,Completed,
+24 Sep 1998,26 Sep 1998,Buy,"Vanguard FTSE 100 Index Unit Trust GBP Acc",Investment ISA,ASxxxxxxxx,,4000.00,24.48,163.45,912345678,Completed,
+24 Sep 1998,26 Sep 1998,Cash Out For Buy,"Cash",Investment ISA,ASxxxxxxxx,,-4000.00,4000,1,912345678,Completed,
+
+24 Sep 1998,27 Sep 1998,Cash In Lump Sum,"Cash",Investment ISA,ASxxxxxxxx,,5000.00,5000,1,912345678,Completed,
+
+
+19 Sep 1998,23 Sep 1998,Cash Interest,"Cash",Investment Account,AGxxxxxxxx,"Cash",0.55,0.55,1,912345678,Completed,
+19 Sep 1998,23 Sep 1998,Tax On Interest,"Cash",Investment Account,AGxxxxxxxx,,-0.14,0,0,912345678,Completed,
+19 Sep 1998,23 Sep 1998,Cash Interest,"Cash",Investment ISA,ASxxxxxxxx,"Cash",61.75,61.75,1,912345678,Completed,

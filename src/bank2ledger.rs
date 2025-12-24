@@ -77,21 +77,21 @@ impl Bank2Ledger {
     }
 
     fn get_first_account(&self, record: &csv::StringRecord) -> String {
-        if let Some(first_account_hint_idx) = self.settings.ledger_record_to_row.first_account_hint {
-            debug!(
-                "Getting first account with hint: {:?}",
-                first_account_hint_idx
-            );
-            let first_account_hint = &record[first_account_hint_idx];
+        if let Some(first_account_hint_cols) = &self.settings.ledger_record_to_row.first_account_hint {
+            let first_account_hint: String = first_account_hint_cols
+            .iter()
+            .map(|i| record[*i].to_string())
+            .collect::<Vec<String>>()
+            .join(" ");
             if let Some(first_account_hint_mapping) = &self.settings.first_account_hint_mapping {
                 for item in first_account_hint_mapping {
                     let re = RegexBuilder::new(&format!(r"{}", item.key))
                         .case_insensitive(true)
                         .build()
                         .unwrap();
-                    match re.find(first_account_hint) {
+                    match re.find(&first_account_hint) {
                         Some(mat) => {
-                            debug!("Match for first account {:?}", mat);
+                            debug!("Match for first account: {:?} hint: {:?}, value: {:?}", mat, item.key, item.value);
                             return item.value.to_string();
                         }
                         None => debug!(
@@ -104,9 +104,6 @@ impl Bank2Ledger {
                 panic!("first_account_hint provided without first_account_hint_mapping: {:?}", first_account_hint)
             }
         }
-        debug!(
-            "Returning default First Account",
-        );
         return self.settings.default_first_account.to_string();
     }
     fn get_second_account(&self, record: &csv::StringRecord) -> String {
