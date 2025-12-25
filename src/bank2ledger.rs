@@ -19,7 +19,10 @@ impl Bank2Ledger {
 
     fn get_date(&self, record: &csv::StringRecord) -> NaiveDate {
         let date_str = &record[self.settings.ledger_record_to_row.date].trim();
-        debug!("Processing date string: \"{}\" with regex {}", date_str, self.settings.date_regex);
+        debug!(
+            "Processing date string: \"{}\" with regex {}",
+            date_str, self.settings.date_regex
+        );
         let re = RegexBuilder::new(&format!(r"{}", self.settings.date_regex))
             .build()
             .unwrap();
@@ -65,7 +68,7 @@ impl Bank2Ledger {
     }
 
     fn get_comment(&self, record: &csv::StringRecord) -> Option<String> {
-        let mut comment_str : String = Default::default();
+        let mut comment_str: String = Default::default();
         if let Some(comment_idxes) = &self.settings.ledger_record_to_row.comment {
             for idx in comment_idxes.iter() {
                 comment_str.push_str(&record[*idx]);
@@ -77,12 +80,14 @@ impl Bank2Ledger {
     }
 
     fn get_first_account(&self, record: &csv::StringRecord) -> String {
-        if let Some(first_account_hint_cols) = &self.settings.ledger_record_to_row.first_account_hint {
+        if let Some(first_account_hint_cols) =
+            &self.settings.ledger_record_to_row.first_account_hint
+        {
             let first_account_hint: String = first_account_hint_cols
-            .iter()
-            .map(|i| record[*i].to_string())
-            .collect::<Vec<String>>()
-            .join(" ");
+                .iter()
+                .map(|i| record[*i].to_string())
+                .collect::<Vec<String>>()
+                .join(" ");
             if let Some(first_account_hint_mapping) = &self.settings.first_account_hint_mapping {
                 for item in first_account_hint_mapping {
                     let re = RegexBuilder::new(&format!(r"{}", item.key))
@@ -91,7 +96,10 @@ impl Bank2Ledger {
                         .unwrap();
                     match re.find(&first_account_hint) {
                         Some(mat) => {
-                            debug!("Match for first account: {:?} hint: {:?}, value: {:?}", mat, item.key, item.value);
+                            debug!(
+                                "Match for first account: {:?} hint: {:?}, value: {:?}",
+                                mat, item.key, item.value
+                            );
                             return item.value.to_string();
                         }
                         None => debug!(
@@ -101,7 +109,10 @@ impl Bank2Ledger {
                     }
                 }
             } else {
-                panic!("first_account_hint provided without first_account_hint_mapping: {:?}", first_account_hint)
+                panic!(
+                    "first_account_hint provided without first_account_hint_mapping: {:?}",
+                    first_account_hint
+                )
             }
         }
         return self.settings.default_first_account.to_string();
@@ -263,7 +274,7 @@ impl Bank2Ledger {
                     );
                 }
             }
-            if should_exclude == true  {
+            if should_exclude == true {
                 break;
             }
         }

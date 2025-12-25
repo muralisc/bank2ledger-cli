@@ -9,11 +9,11 @@ first_amount_currency_default='GBP'
 [ledger_record_to_row]
 date = 0                  # Date
 payee = 1                 # Name
-second_account_hint = 1   # Full name of stock
+second_account_hint = [1]   # Full name of stock
 first_amount= 4           # Quantity of Stock
 first_amount_currency= 2  # Ticker of stock
 comment = [1,2,3]
-first_account_hint = 2
+first_account_hint = [2]
 
 [[exclude_conditions]]
 type = "ColumnContainsValue"

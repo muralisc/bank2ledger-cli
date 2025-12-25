@@ -10,7 +10,7 @@ first_amount_currency_default='GBP'
 date = 1                  # Date
 payee = 4                 # Name
 # first_account= -1       # Static: Monzo
-second_account_hint = 4   # Name
+second_account_hint = [4]   # Name
 first_amount= 7           # Amount
 first_amount_currency= 8  # Currency
 
