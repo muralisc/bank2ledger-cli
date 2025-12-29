@@ -110,15 +110,3 @@ RUST_BACKTRACE=1 cargo run -- \
     --config ~/src/bank2ledger-cli/config/sbi.toml \
     --transactions-csv ~/shared_folders/transfer_work/sbi-12dec.xls > ledger_2023_12Dec_sbi.txt
 ```
-
-## Using target build bin
-```
-bank2ledger-cli \
-    --config ~/src/bank2ledger-cli/config/sbi.toml \
-    --transactions-csv ~/shared_folders/transfer_work/sbi-12dec.xls > ledger_2023_12Dec_sbi.txt
-```
-
-# TODO 
-- Eliminate Unaccounted expenses
-    - Either option to amend on the go !
-- Add opiton to add comments for some payees !

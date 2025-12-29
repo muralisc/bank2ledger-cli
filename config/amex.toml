@@ -11,7 +11,7 @@ minus_indicates_expense=false
 date = 0                  # Date
 payee = 1                 # Name
 # first_account= -1       # Static: Monzo
-second_account_hint = 1   # Name
+second_account_hint = [1]   # Name
 first_amount= 2           # Amount
 # first_amount_currency= 8  # Currency
 
@@ -97,5 +97,5 @@ value= "Assets:Bank:PostOfficeTravelMoneyCard"
 
 [[second_account_hint_mapping.income]]
 key = "PAYMENT RECEIVED"
-value = "Liabilities:CreditCard"
+value = "Liabilities:Amex:BACreditCard"
 

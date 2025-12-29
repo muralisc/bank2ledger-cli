@@ -9,7 +9,7 @@ first_amount_currency_default='GBP'
 [ledger_record_to_row]
 date = 0                  # Date
 payee = 1                 # Name
-second_account_hint = 1   # Name
+second_account_hint = [1]   # Name
 first_amount= 2           # Amount
 
 [[exclude_conditions]]
@@ -25,7 +25,7 @@ value = "Expenses:Groceries"
 
 [[second_account_hint_mapping.expense]]
 key = "AMERICAN EXP"
-value = "Liabilities:CreditCard"
+value = "Liabilities:Amex:BACreditCard"
 
 [[second_account_hint_mapping.expense]]
 key = "AMZNMktplace|AMAZON.CO.UK|Amazon Prime"
@@ -52,6 +52,10 @@ value = "Income:Facebook:Salary"
 key = "M Sureshchandran CR|M Sureshchandran Murali Sureshchand CR"
 value = "Assets:WireTransfer:MONZO_HSBC"
 
+[[second_account_hint_mapping.income]]
+key = "Remitly U.K."
+value = "Assets:WireTransfer:REMITLY_HSBC"
+
 [[second_account_hint_mapping.expense]]
 # transfers TO Monzo
 key = "MURALI SURESH TRANSFER FROM HSBC SO"
@@ -65,6 +69,3 @@ value = "Assets:Bank:HSBC:Fixed"
 key = "Remitly UK|M Sureshchandran pis"
 value = "Assets:WireTransfer:REMITLY_HSBC"
 
-[[second_account_hint_mapping.income]]
-key = "Remitly U.K."
-value = "Assets:WireTransfer:REMITLY_HSBC"

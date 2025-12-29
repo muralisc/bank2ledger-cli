@@ -62,7 +62,7 @@ value = "Expenses:Utilities"
 
 [[second_account_hint_mapping.expense]]
 key = "AMERICAN EXP"
-value = "Liabilities:CreditCard"
+value = "Liabilities:Amex:BACreditCard"
 
 [[second_account_hint_mapping.expense]]
 key = "L&Q|Barnet|Locrating"
@@ -90,7 +90,7 @@ value = "Expenses:Groceries"
 
 [[second_account_hint_mapping.expense]]
 key = "AMERICAN EXP"
-value = "Liabilities:CreditCard"
+value = "Liabilities:Amex:BACreditCard"
 
 [[second_account_hint_mapping.expense]]
 # for HSBC

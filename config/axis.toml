@@ -1,5 +1,5 @@
 debug = true
-default_first_account = "Assets:Bank:Citi:Savings"
+default_first_account = "Assets:Bank:Axis:Savings"
 default_second_account = "Expenses:UnaccountedExpenses"
 csv_has_headers = true
 date_format="%d-%m-%Y"
@@ -10,7 +10,7 @@ first_amount_currency_default='INR'
 date = 0                  # Date
 payee = 2                 # Name
 # first_account= -1       # Static: Monzo
-second_account_hint = 2   # Name
+second_account_hint = [2]   # Name
 first_amount= 4           # Amount
 first_amount_debit = 3
 
@@ -54,4 +54,4 @@ value = "Assets:WireTransfer:SBI_CITI"
 
 [[second_account_hint_mapping.expense]]
 key = "INTEREST EARNED|SB:5153341817:Int"
-value = "Income:Citi:Interest"
+value = "Income:Axis:Interest"
