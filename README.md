@@ -1,3 +1,6 @@
+# Archived
+
+This project is deprecated in favor of [xsv2ledger](https://github.com/muralisc/xsv2ledger-cli)
 
 # Bank2ledger
 
